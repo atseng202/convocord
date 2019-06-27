@@ -1,0 +1,119 @@
+.authForm-box {
+  // height: 100%;
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  width: 480px;
+  box-sizing: border-box;
+  padding: 40px;
+  background-color: $darker-grey;
+  color: $grey;
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+}
+
+.authForm-header h3 {
+  color: $white;
+  font-size: 26px;
+  font-weight: $light;
+}
+
+.authForm-header p {
+  color: $grey;
+  font-size: 18px;
+  font-weight: $regular;
+}
+
+.authForm-block {
+  text-align: left;
+}
+
+.authForm-label {
+  display: block;
+  color: $label-grey;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: $bold;
+  line-height: 16px;
+}
+
+.authForm-input {
+  width: 100%;
+  border: 1px solid $input-dark;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 10px;
+  height: 40px;
+
+  color: $font-white;
+  background-color: $input-black;
+}
+
+.authForm-input:hover {
+  border-color: $input-hover-dark;
+}
+
+.authForm-input:focus {
+  border-color: $button-blue;
+}
+
+.authForm-buttonsContainer {
+  display: flex;
+  justify-content: space-between;
+  color: $white;
+}
+
+.authForm-buttonsContainer > button {
+  // width: 45%;
+  margin-right: 8px;
+  flex: 1 1 auto;
+  text-align: center;
+  background-color: $button-blue;
+  padding: 16px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  font-weight: $regular-bold;
+  font-size: 16px;
+}
+
+.authForm-buttonsContainer > button:last-child {
+  margin-right: 0px;
+}
+
+.authForm-buttonsContainer > button:hover {
+  background-color: $button-hover-blue;
+}
+
+.authForm-footer {
+  font-size: 14px;
+}
+
+.authForm-footer > a {
+  margin-left: 4px;
+  vertical-align: bottom;
+  color: $button-blue;
+}
+
+.authForm-footer > a:hover {
+  text-decoration: underline;
+}
+
+// Getting form to be responsive and page scrollable
+.session-div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 750px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
