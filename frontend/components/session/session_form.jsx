@@ -76,9 +76,13 @@ class SessionForm extends React.Component {
       </div>
     );
 
+    // <Link to="/" className="session-div-logo marginBottom20">Convocord</Link>
     return (
       <div className="session-div">
-        <Link to="/" className="session-div-logo marginBottom20">Convocord</Link>
+        <Link className="splashHeader-logoContainer session-div-logo marginBottom20" to="/">
+          <div className="splashHeader-logo"></div>
+          <h1>Convocord</h1>
+        </Link>
         <div className="authForm-box darkTheme">
           <form className="authForm">
             {formHeader}

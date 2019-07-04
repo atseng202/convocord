@@ -10,9 +10,15 @@ class Splash extends React.Component {
   render() {
     const { loggedIn } = this.props;
     const openButton = loggedIn ? (
-      <Link to ="/servers/@me" className="splashBody-button">Open Convocord</Link>
+      <Link to ="/servers/@me" className="splash-button">Open Convocord</Link>
     ) : (
-      <Link to="/signup" className="splashBody-button">Register for Convocord</Link>
+      <Link to="/signup" className="splash-button">Register for Convocord</Link>
+    );
+
+    const footerOpenButton = loggedIn ? (
+      <Link to="/servers/@me" className="splash-button">Open Convocord</Link>
+    ) : (
+      <Link to="/signup" className="splash-button">Sign Up Now</Link>
     );
 
     return (
@@ -34,6 +40,17 @@ class Splash extends React.Component {
 
           </div>
         </section>
+
+        <footer className="splashFooter">
+          <hr className="splashFooter-hrTop"></hr>
+          <div className="splashFooter-content">
+            <div className="splashFooter-slogan">
+              <h2 className="splashFooter-h2">Ready to join Convocord? It's free!</h2>
+              <h3 className="splashFooter-h3">Join people in checking out the app today!</h3>
+            </div>
+            {footerOpenButton}
+          </div>
+        </footer>
       </div>
     );
 
