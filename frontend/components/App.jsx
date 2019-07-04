@@ -4,9 +4,12 @@ import { Route, Switch } from 'react-router-dom';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 
+import SplashContainer from './splash/splash_container';
+
 const App = () => (
   <div className="app-div">
     < Switch>
+      <Route exact path="/" component={SplashContainer} />
       <Route path="/login" component={LoginFormContainer} />
       <Route path="/signup" component={SignupFormContainer} />
     </Switch>

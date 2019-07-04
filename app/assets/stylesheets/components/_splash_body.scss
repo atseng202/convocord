@@ -1,0 +1,43 @@
+.splashBody {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 72px 0 0;
+}
+
+.splashBody-content {
+  padding: 72px 50px 0 50px;
+}
+
+.splashBody-h1 {
+  font-weight: $bolder;
+  font-size: 36px;
+}
+
+.splashBody-p {
+  color: $white-opaque;
+  max-width: 710px;
+  font-size: 16px;
+  font-weight: $regular;
+  font-family: $app-font;
+  margin-top: 12px;
+  margin-bottom: 30px;
+}
+
+.splashBody-button {
+  background-color: $button-blue;
+  padding: 16px 80px;
+  border-radius: 3px;
+}
+
+.splashBody-img {
+  background-image: url("/assets/blurrystock-HIbAmybJHVs-unsplash.jpg");
+  background-size: cover;
+  overflow: hidden;
+  width: 75%;
+  height: 650px;
+  margin-top: 40px;
+}
