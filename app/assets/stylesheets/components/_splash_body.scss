@@ -36,9 +36,12 @@
 .splashBody-img {
   background-image: url("/assets/blurrystock-HIbAmybJHVs-unsplash.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   overflow: hidden;
-  width: 80%;
-  height: 650px;
+  box-sizing: border-box;
+  width: 90%;
+  height: 750px;
   margin-top: 40px;
 }
 
