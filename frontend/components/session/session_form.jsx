@@ -12,6 +12,7 @@ class SessionForm extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
   }
 
   componentWillUnmount() {
@@ -32,6 +33,29 @@ class SessionForm extends React.Component {
     }
 
     this.props.processForm(formUser);
+  }
+
+  handleDemoSubmit(event) {
+    event.preventDefault();
+    const demoEmail = ["t", "e", "s", "t", "@", "g", "m", "a", "i", "l", ".", "c", "o", "m"];
+    const demoPassword = ["t", "e", "s", "t", "i", "n", "g"];
+    var userIndex = 0;
+    var passwordIndex = 0;
+
+    var interval = setInterval(() => {
+      if (userIndex === demoEmail.length) {
+        if (passwordIndex === demoPassword.length) {
+          this.submitButton.click();
+          clearInterval(interval);
+        } else {
+          this.setState(prevState => ({ password: prevState.password + demoPassword[passwordIndex] }));
+          passwordIndex++;
+        }
+      } else {
+        this.setState(prevState => ({ email: prevState.email + demoEmail[userIndex] }));
+        userIndex++;
+      }
+    }, 100);
   }
 
   render() {
@@ -61,7 +85,7 @@ class SessionForm extends React.Component {
     );
     
     const demoButton = (formType === 'login') && (
-      <button onClick={this.handleDemoSubmit}>Demo Login</button>
+      <button onClick={this.handleDemoSubmit} >Demo Login</button>
     )
     const submitText = (formType === 'signup') ? "Continue" : "Login";
     
@@ -102,7 +126,7 @@ class SessionForm extends React.Component {
               </div>
 
               <div className="authForm-buttonsContainer marginBottom8">
-                <button onClick={this.handleSubmit}>{submitText}</button>
+                <button onClick={this.handleSubmit} ref={input => this.submitButton = input}>{submitText}</button>
                 {demoButton}
               </div>
 
