@@ -7,6 +7,20 @@ class User < ApplicationRecord
 
   before_validation :ensure_session_token
 
+  # Associations
+  has_many(
+    :servers_users,
+    class_name: "ServersUser",
+    foreign_key: :user_id,
+    primary_key: :id  
+  )
+
+  has_many(
+    :servers,
+    through: :servers_users,
+    source: :server
+  )
+
   def self.generate_session_token 
     SecureRandom::urlsafe_base64(16)
   end 
