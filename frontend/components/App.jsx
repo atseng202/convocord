@@ -8,12 +8,15 @@ import SignupFormContainer from './session/signup_form_container';
 import SplashContainer from './splash/splash_container';
 import NoMatch from './error/no_match';
 
+import ServerIndexContainer from './servers/server_index_container';
+
 const App = () => (
   <div className="app-div">
     < Switch>
       <Route exact path="/" component={SplashContainer} />
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
+      <ProtectedRoute path="/servers" component={ServerIndexContainer} />
       <Route component={NoMatch} />
     </Switch>
 
