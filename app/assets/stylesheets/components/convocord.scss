@@ -3,14 +3,21 @@
 @import './splash_header';
 @import './splash_body';
 
+// No Match component
+@import './no_match';
+
+// Servers components
+@import './server_index';
+
 // body {
   // overflow: hidden;
 // }
 
 #root {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  min-width: 425px;
+  height: 100vh;
   overflow: scroll;
   display: flex;
   flex-direction: column;
@@ -20,7 +27,13 @@
   font-family: $app-font;
 }
 
-// .app-div {
-//   position: relative;
-//   flex: 1 1 auto;
-// }
+.app-div {
+  position: relative;
+  flex: 1 1 auto;
+}
+
+.home-div, .protected-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

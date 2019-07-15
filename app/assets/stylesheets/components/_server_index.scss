@@ -1,0 +1,97 @@
+.servers-wrapper {
+  display: flex;
+  width: 72px;
+  flex-direction: column;
+  flex-shrink: 0; 
+  position: relative;
+  background-color: $black;
+  overflow: hidden;
+}
+
+.servers-scrolling-wrap {
+  width: 90px;
+  position: relative;
+  display: flex;
+  height: 100vh;
+  flex: 1 1 auto;
+  contain: layout paint style;
+}
+
+.servers-ul-scrollable {
+  padding: 12px 0 0 0;
+  overflow-x: visible;
+  overflow-y: scroll;
+  flex: 1 1 auto;
+
+}
+
+.servers-li-wrapper {
+  // margin-bottom: 8px;
+  margin: 0 0 8px;
+  width: 72px;
+  display: flex;
+  justify-content: center;
+
+  position: relative;
+}
+
+.li-link-wrapper {
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: $light-black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addButton {
+  color: $light-green;
+  cursor: pointer;
+}
+
+.homeButton {
+  background-color: $button-blue;
+  color: $white;
+}
+
+.homeButton-hr {
+  height: 2px;
+  width: 32px;
+  border-radius: 1px;
+  background-color: $light-black;
+}
+
+// Tooltip - In Progress
+
+.has-tooltip {
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  // position: relative;
+  visibility: hidden;
+}
+
+.has-tooltip:hover .tooltip {
+  visibility: visible;
+  z-index: 2;
+}
+
+.tooltiptext {
+  // display: inline-block;
+  position: absolute;
+  // top: 2em;
+  left: 300%;
+  // width: 140px;
+  color: #FFFFFF;
+  background: #000000;
+  line-height: 96px;
+  // text-align: center;
+  border-radius: 8px;
+  // box-shadow: 4px 3px 10px #800000;
+}
+
+
