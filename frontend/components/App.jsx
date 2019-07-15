@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute, HomeLayoutRoute } from '../util/route_util';
 
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
@@ -9,6 +9,7 @@ import SplashContainer from './splash/splash_container';
 import NoMatch from './error/no_match';
 
 import ServerIndexContainer from './servers/server_index_container';
+import FriendIndex from './friends/friend_index';
 
 const App = () => (
   <div className="app-div">
@@ -16,7 +17,8 @@ const App = () => (
       <Route exact path="/" component={SplashContainer} />
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
-      <ProtectedRoute path="/servers" component={ServerIndexContainer} />
+      <HomeLayoutRoute path="/servers/@me" component={FriendIndex} />
+      <ProtectedRoute path="/servers/:serverId" component={NoMatch} />
       <Route component={NoMatch} />
     </Switch>
 
