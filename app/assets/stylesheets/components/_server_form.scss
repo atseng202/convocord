@@ -1,0 +1,121 @@
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  box-sizing: border-box;
+  z-index: 1;
+  
+  pointer-events: none;
+}
+
+.serverForm-box {
+  background-color: $white;
+  // max-height: 0;
+  width: 540px;
+  // left: calc(-50vw + 50%);
+  // height: 420px;
+  // border-radius: 5px;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  margin-left: -270px;
+  margin-top: -210px;
+
+  display: flex;
+  // display: none;
+  max-height: 420px;
+  height: 420px;
+}
+
+.serverForm-box.expand {
+  // max-height: 420px;
+  // height: 420px;
+  // display: flex;
+}
+
+.serverForm {
+  // color: $black;
+  // height: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.serverForm-header {
+  // color: $button-blue;
+  font-weight: $bolder;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-top: 6px;
+  margin-bottom: 40px;
+}
+
+.serverForm-actions {
+  flex-grow: 1;
+}
+
+.serverForm-createServer {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0,0,0, 0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,.08);
+
+  height: 100%;
+  flex-grow: 1;
+}
+
+.serverForm-header, .createServer-header {
+  color: $button-blue;
+}
+
+.createServer-header {
+  font-size: 18px;
+  font-weight: $regular-bold;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+.createServer-body {
+  color: $body-text-grey;
+  margin-top: 16px;
+  font-size: 14px;
+  padding: 0 15px;
+  font-weight: $regular;
+  line-height: 20px;
+}
+
+.createServer-icon {
+  background-image: url("/assets/friends.png");
+  // height: 78px;
+  height: 120px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50%;
+  margin-top: 24px;
+}
+
+.createServer-icon-attribute {
+  font-size: 8px;
+  color: $body-text-grey;
+  margin-top: 4px;
+  font-weight: $regular;
+}
+
+.createServer-submit {
+  color: $white;
+  background-color: $button-blue;
+  width: 50%;
+  align-self: center;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: $regular-bold;
+  border-radius: 3px;
+  margin-top: 16px;
+}

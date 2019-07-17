@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { AuthRoute, ProtectedRoute, HomeLayoutRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute, HomeLayoutRoute, ProtectedAgainRoute } from '../util/route_util';
 
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
@@ -11,14 +11,15 @@ import NoMatch from './error/no_match';
 import ServerIndexContainer from './servers/server_index_container';
 import FriendIndex from './friends/friend_index';
 
+import HomeMain from './home/home_main';
+
 const App = () => (
   <div className="app-div">
     < Switch>
       <Route exact path="/" component={SplashContainer} />
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
-      <HomeLayoutRoute path="/servers/@me" component={FriendIndex} />
-      <ProtectedRoute path="/servers/:serverId" component={NoMatch} />
+      <ProtectedRoute path="/servers/@me" component={HomeMain} />
       <Route component={NoMatch} />
     </Switch>
 
@@ -27,12 +28,11 @@ const App = () => (
 
 export default App;
 
+// Refactoring to have base components HomeMain at /servers/@me and ServersMain at /servers/:serverId/...
+// {/* <HomeLayoutRoute path="/servers/@me" component={FriendIndex} /> */}
+// {/* <ProtectedRoute path="/servers/:serverId" component={NoMatch} /> */}
+
 // ServerIndex renders at path "/" so we want it to appear in all parts of the app
 // unless its the splash page, login or signup. Good to place in the Switch statement
 
-/*
-<h1>Temporary Placeholder for Convocord</h1>
-  <Route path="/welcome" component={Splash} />
-  <Route path="/" component={ServerIndexContainer} /> 
-*/
 
