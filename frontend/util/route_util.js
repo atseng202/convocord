@@ -19,44 +19,12 @@ const Auth = ({loggedIn, path, component: Component, exact}) => (
   />
 );
 
-const Protected = ({ loggedIn, path, component: Component }) => (
-  <Route 
-    path={path}
-    render={ props => {
-      if (loggedIn) {
-        return (
-          <div className="protected-div">
-            <ServerIndexContainer />
-            <Component {...props} />
-          </div>
-        );
-      } else {
-        return (
-          <Redirect to="/login" />
-        );
-      } 
-    }}
-  />
-);
-
-const HomeLayout = ({ loggedIn, path, component: Component }) => (
+const Protected= ({ loggedIn, path, component: Component }) => (
   <Route
     path={path}
-    render={ props => {
-      if (loggedIn) {
-        return (
-          <div className="home-div">
-            <ServerIndexContainer />
-            <HomeIndex />
-            <Component {...props} />
-          </div>
-        );
-      } else {
-        return (
-          <Redirect to="/login" />
-        );
-      }
-    }}
+    render={props => ( 
+      loggedIn ? <Component {...props} /> : <Redirect to="/login" />
+    )}
   />
 );
 
@@ -64,4 +32,47 @@ export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
 
 export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected));
 
-export const HomeLayoutRoute = withRouter(connect(mapStateToProps)(HomeLayout));
+// const Protected = ({ loggedIn, path, component: Component }) => (
+//   <Route
+//     path={path}
+//     render={props => {
+//       if (loggedIn) {
+//         return (
+//           <div className="protected-div">
+//             <ServerIndexContainer />
+//             <Component {...props} />
+//           </div>
+//         );
+//       } else {
+//         return (
+//           <Redirect to="/login" />
+//         );
+//       }
+//     }}
+//   />
+// );
+
+// const HomeLayout = ({ loggedIn, path, component: Component }) => (
+//   <Route
+//     path={path}
+//     render={props => {
+//       if (loggedIn) {
+//         return (
+//           <div className="home-div">
+//             <ServerIndexContainer />
+//             <HomeIndex />
+//             <Component {...props} />
+//           </div>
+//         );
+//       } else {
+//         return (
+//           <Redirect to="/login" />
+//         );
+//       }
+//     }}
+//   />
+// );
+
+// export const HomeLayoutRoute = withRouter(connect(mapStateToProps)(HomeLayout));
+
+// export const ProtectedAgainRoute = withRouter(connect(mapStateToProps)(ProtectedAgain));
