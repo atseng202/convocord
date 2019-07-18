@@ -5,10 +5,17 @@ import ServerIndexItem from './server_index_item';
 class ServerIndex extends React.Component {
   constructor(props) {
     super(props);
+
+    this.openServerForm = this.openServerForm.bind(this);
   }
 
   componentWillMount() {
     this.props.fetchServers();
+  }
+
+  openServerForm(event) {
+    event.preventDefault();
+    this.props.openServerForm();
   }
 
   render() {
@@ -30,7 +37,7 @@ class ServerIndex extends React.Component {
     );
 
     const addServerItem = (
-      <li className="servers-li-wrapper">
+      <li className="servers-li-wrapper" onClick={this.openServerForm}>
         <button className="li-link-wrapper addButton" aria-label="Add a Server">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="false">
             <path fill="currentColor" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />

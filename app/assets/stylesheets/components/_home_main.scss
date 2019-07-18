@@ -7,8 +7,11 @@
   bottom: 0;
   width: 100vw;
   left: calc(-50vw + 50%);
+
+  z-index: 1;
 }
 
+// Hide the overlay by adding this class
 .hidden {
   display: none;
 }

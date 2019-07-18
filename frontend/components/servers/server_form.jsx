@@ -3,11 +3,18 @@ import React from 'react';
 class ServerForm extends React.Component {
   constructor(props) {
     super(props);
+
+    this.closeServerForm = this.closeServerForm.bind(this);
+  }
+
+  closeServerForm(event) {
+    event.preventDefault();
+    this.props.closeServerForm();
   }
 
   render() {
     return (
-      <div className="modal-wrapper">
+      <div className="modal-wrapper" onClick={this.closeServerForm}>
           <div className="serverForm-box expand">
               <form className="serverForm">
                 <header className="serverForm-header">Nice! Another server?</header>
