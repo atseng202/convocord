@@ -32,7 +32,8 @@
   display: flex;
   // display: none;
   max-height: 420px;
-  height: 420px;
+  // height: 420px;
+  z-index: 2;
 }
 
 .serverForm-box.expand {
@@ -41,9 +42,10 @@
   // display: flex;
 }
 
-.serverForm {
+.serverForm-landing, .serverForm-actual {
   // color: $black;
   // height: 100%;
+
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
@@ -54,7 +56,8 @@
   font-weight: $bolder;
   font-size: 18px;
   text-transform: uppercase;
-  margin-top: 6px;
+  // margin-top: 6px;
+  margin-top: 20px;
   margin-bottom: 40px;
 }
 
@@ -72,7 +75,7 @@
   flex-grow: 1;
 }
 
-.serverForm-header, .createServer-header {
+.serverForm-header, .createServer-header, .serverForm-title {
   color: $button-blue;
 }
 
@@ -119,4 +122,110 @@
   font-weight: $regular-bold;
   border-radius: 3px;
   margin-top: 16px;
+  
+  margin-bottom: 16px;
+}
+
+// Actual form 
+.serverForm-actual {
+  // color: $black;
+  padding: 28px 40px 0;
+}
+
+.serverForm-title {
+  font-weight: $bolder;
+  text-transform: uppercase;
+}
+
+.serverForm-caption {
+  color: $body-text-grey;
+  // margin-top: 16px;
+  font-size: 16px;
+  padding: 10px 0;
+  font-weight: $regular-bold;
+  line-height: 1.2;
+  // height: 20px;
+}
+
+.serverForm-title, .serverForm-caption {
+  font-size: 18px;
+  text-align: center;
+}
+
+.serverForm-inputs {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  margin-top: 16px;
+}
+
+.inputs-outerWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.inputs-label {
+  color: $darker-grey;
+  font-size: 11px;
+  font-weight: $bolder;
+  text-transform: uppercase;
+  // display: block;
+}
+
+.inputs-name {
+  margin-top: 12px;
+  padding: 10px 4px;
+  height: 40px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: $regular;
+  color: $black;
+  text-align: left;
+  border-bottom: 2px solid rgba(79,84,92, .3);
+  // background: transparent;
+}
+
+.inputs-name:hover {
+  cursor: text;
+}
+
+.inputs-name::placeholder {
+  color: $body-text-grey;
+}
+
+.serverForm-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  color: $black;
+
+}
+
+.serverForm-buttons > .backButton {
+  color: $body-text-grey;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.serverForm-buttons > .backButton::before {
+  content: "← "
+}
+
+.serverForm-buttons > .backButton:hover {
+  border-bottom: 2px solid $border-hover-darkgrey;
+}
+
+.serverForm-buttons > .createButton {
+  color: $white;
+  background-color: $button-blue;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: $regular-bold;
+  border-radius: 3px;
+  min-width: 96px;
+}
+
+.createServer-submit:hover, .serverForm-buttons > .createButton:hover {
+  background-color: $button-hover-blue;
 }
