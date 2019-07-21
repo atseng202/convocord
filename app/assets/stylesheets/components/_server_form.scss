@@ -229,3 +229,7 @@
 .createServer-submit:hover, .serverForm-buttons > .createButton:hover {
   background-color: $button-hover-blue;
 }
+
+.serverForm-errors {
+  color: $red
+}

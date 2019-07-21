@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom'; 
 
 class ServerForm extends React.Component {
   constructor(props) {
@@ -14,12 +15,15 @@ class ServerForm extends React.Component {
     this.changeToLandingForm = this.changeToLandingForm.bind(this);
 
     this.handleChange = this.handleChange.bind(this);
+    
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   closeServerForm(event) {
     event.preventDefault();
     if (event.currentTarget === event.target) {
       this.props.closeServerForm();
+      this.props.clearServerErrors();
     }
   }
 
@@ -40,7 +44,28 @@ class ServerForm extends React.Component {
     this.setState({serverName: event.target.value})
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append('server[name]', this.state.serverName);
+
+    const { createServer } = this.props;
+    createServer(formData).then(
+      (newServer) => {
+        this.props.history.push(`/servers/${newServer.server.id}`);
+        this.props.closeServerForm();
+        this.props.clearServerErrors();
+      } 
+    );
+  }
+
   render() { 
+    const errorsList = (
+      <ul className="serverForm-errors">
+        {this.props.errors.map((err,idx) => <li key={idx}>{err}</li>)}
+      </ul>
+    );
+
     const serverFormPage = this.state.onLandingForm ? 
       (
       <form className="serverForm-landing">
@@ -66,14 +91,14 @@ class ServerForm extends React.Component {
           <section className="serverForm-inputs">
             <div className="inputs-outerWrapper">
               <label className="inputs-label">Server Name</label>
-              
+              {errorsList}
               <input className="inputs-name" type="text" placeholder="Enter a server name" onChange={this.handleChange} value={this.state.serverName}/>
             </div>
     
 
             <section className="serverForm-buttons">
               <button className="backButton" onClick={this.changeToLandingForm}>Back</button>
-              <button className="createButton">Create</button>
+              <button className="createButton" onClick={this.handleSubmit}>Create</button>
             </section>
           </section>
 
@@ -92,4 +117,4 @@ class ServerForm extends React.Component {
   }
 }
 
-export default ServerForm;
+export default withRouter(ServerForm);

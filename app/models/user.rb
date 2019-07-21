@@ -12,7 +12,8 @@ class User < ApplicationRecord
     :servers_users,
     class_name: "ServersUser",
     foreign_key: :user_id,
-    primary_key: :id  
+    primary_key: :id,
+    dependent: :destroy 
   )
 
   has_many(

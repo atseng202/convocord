@@ -1,13 +1,16 @@
 import { connect } from 'react-redux';
-import { closeServerForm } from '../../actions/server_actions';
+import { closeServerForm, createSingleServer, clear_server_errors } from '../../actions/server_actions';
 import ServerForm from './server_form';
 
 const mapStateToProps = state => ({
-  serverFormOpen: state.ui.serversUI.serverFormOpen
+  serverFormOpen: state.ui.serversUI.serverFormOpen,
+  errors: state.errors.server
 });
 
 const mapDispatchToProps = dispatch => ({
-  closeServerForm: () => dispatch(closeServerForm())
+  closeServerForm: () => dispatch(closeServerForm()),
+  createServer: (formServer) => dispatch(createSingleServer(formServer)),
+  clearServerErrors: () => dispatch(clear_server_errors())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServerForm);

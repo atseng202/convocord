@@ -7,6 +7,8 @@
 #               api_servers GET    /api/servers(.:format)                                                                   api/servers#index {:format=>:json}
 #                           POST   /api/servers(.:format)                                                                   api/servers#create {:format=>:json}
 #                api_server GET    /api/servers/:id(.:format)                                                               api/servers#show {:format=>:json}
+#                           PATCH  /api/servers/:id(.:format)                                                               api/servers#update {:format=>:json}
+#                           PUT    /api/servers/:id(.:format)                                                               api/servers#update {:format=>:json}
 #                           DELETE /api/servers/:id(.:format)                                                               api/servers#destroy {:format=>:json}
 #                      root GET    /                                                                                        static_pages#root
 #        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
