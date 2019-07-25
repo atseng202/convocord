@@ -6,6 +6,8 @@ import FriendIndex from '../friends/friend_index';
 import ServerForm from '../servers/server_form';
 import ServerFormContainer from '../servers/server_form_container';
 
+import ServerDetailContainer from '../servers/server_detail_container';
+
 import { Route } from 'react-router-dom';
 
 class HomeMain extends React.Component {
@@ -22,8 +24,11 @@ class HomeMain extends React.Component {
       <div className="home-div">
         <section className="home-main">
           <Route path={["/servers/@me", "/servers/:serverId"]} component={ServerIndexContainer} />
+          <Route exact path="/servers/:serverId" component={ServerDetailContainer} />
           <Route exact path="/servers/@me" component={HomeIndex} />
           <Route exact path="/servers/@me" component={FriendIndex} />
+
+          
         </section>
 
         {overlay}

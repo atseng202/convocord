@@ -7,6 +7,7 @@ class ServerIndex extends React.Component {
     super(props);
 
     this.openServerForm = this.openServerForm.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentWillMount() {
@@ -16,6 +17,11 @@ class ServerIndex extends React.Component {
   openServerForm(event) {
     event.preventDefault();
     this.props.openServerForm();
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+    // TODO: - Add a context menu for quick server settings
   }
 
   render() {
@@ -58,7 +64,7 @@ class ServerIndex extends React.Component {
               <div className="homeButton-hr" />
             </li>
 
-            {servers.map(server => <ServerIndexItem key={server.id} server={server} />)}
+            {servers.map(server => <ServerIndexItem key={server.id} server={server} handleClick={this.handleClick} />)}
 
             {addServerItem}
           </ul>

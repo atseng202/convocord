@@ -1,0 +1,115 @@
+.server-detail {
+  background-color: $light-black;
+  width: 240px;
+}
+
+.serverDetailContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+
+  background-color: $light-black;
+}
+
+.serverDetail-headerChild {
+  flex: 0 0 auto;
+}
+
+.serverDetail-headerContainer {
+  position: relative;
+  cursor: pointer;
+}
+
+.serverDetail-header {
+  position: relative;
+  color: $white;
+  font-weight: $regular-bold;
+  padding: 0 16px;
+  height: 48px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+
+  box-shadow: 0 1px 0 rgba(0,0,0,.2), 0 1.5px 0 rgba(0,0,0,.05), 0 2px 0 rgba(0,0,0,.05);
+}
+
+.serverDetail-header-name {
+  font-size: 16px;
+  font-weight: $regular-bold;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  // flex-grow: 1;
+}
+
+// Channels
+.serverDetail-channelsContainer {
+  display: flex;
+  height: 100%;
+  flex: 1 1 auto;
+  overflow-y: scroll;
+}
+
+.serverDetail-channels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+// Channel Header
+.channels-rowContainer-header {
+  // padding-top: 16px;
+  box-sizing: border-box;
+  padding: 16px 8px 0 8px;
+  width: 100%;
+}
+
+.channels-header {
+  display: flex;
+  justify-content: space-between;
+  color: $channels-grey;
+  align-items: center;
+}
+
+.channels-header-name {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: $regular-bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.channels-addButton {
+  font-size: 22px;
+  margin-right: 12px;
+}
+
+// Channel rows 
+.channel-content {
+  display: flex; 
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.channel-hashtag {
+  color: $channels-grey;
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+.channel-content:focus {
+  background-color: $darker-grey;
+}
+
+.channel-name {
+  font-size: 16px;
+}
+
+.channels-rowContainer {
+  box-sizing: border-box;
+  padding: 8px 8px;
+  width: 100%;
+}
