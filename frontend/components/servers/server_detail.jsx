@@ -17,8 +17,35 @@ class ServerDetail extends React.Component {
   }
 
   render() {
-    const { server } = this.props;
+    const { server, categories } = this.props;
     const serverName = server && server.name;
+
+    const categoriesSection = (
+      <section className="serverDetail-channelsContainer">
+        {categories.map((category, idx) => 
+        <div className="serverDetail-categoryWrapper" key={category.id}>
+
+          <div className="channels-rowContainer-header">
+            <header className="channels-header">
+              <span className="channels-header-name">{category.name}</span>
+              <button className="channels-addButton">+</button>
+            </header>
+          </div> 
+
+          <div className="channels-rowContainer">
+            <button className="channel-content">
+              <div className="channel-hashtag">#</div>
+              <span className="channel-name">general</span>
+            </button>
+          </div>
+
+        </div>
+        )}
+
+      </section>
+      
+    );
+
     return (
       <div className="server-detail">
         <div className="serverDetailContainer">
@@ -31,25 +58,9 @@ class ServerDetail extends React.Component {
             </div>
           </section>
 
-          <section className="serverDetail-channelsContainer">
-            <div className="serverDetail-channels">
+  
+          {categoriesSection}
 
-              <div className="channels-rowContainer-header">
-                <header className="channels-header">
-                  <span className="channels-header-name">Text Channels</span>
-                  <button className="channels-addButton">+</button>
-                </header>
-              </div>
-
-              <div className="channels-rowContainer">
-                <button className="channel-content">
-                  <div className="channel-hashtag">#</div>
-                  <span className="channel-name">general</span>
-                </button>
-              </div>
-             
-            </div>
-          </section>
 
         </div>
       </div>
@@ -58,3 +69,28 @@ class ServerDetail extends React.Component {
 }
 
 export default withRouter(ServerDetail);
+
+/*
+<div className="serverDetail-channels">
+
+  <div className="channels-rowContainer-header">
+    <header className="channels-header">
+      <span className="channels-header-name">Text Channels</span>
+      <button className="channels-addButton">+</button>
+    </header>
+  </div>
+
+  <div className="channels-rowContainer">
+    <button className="channel-content">
+      <div className="channel-hashtag">#</div>
+      <span className="channel-name">general</span>
+    </button>
+  </div>
+
+</div>
+*/
+
+// Replacing serverDetail-categoriesSection with just channelsContainer
+/*
+<div className="serverDetail-categoriesSection">
+*/
