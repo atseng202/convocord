@@ -21,4 +21,12 @@ class Server < ApplicationRecord
     through: :servers_users,
     source: :user
   )
+
+  has_many(
+    :categories,
+    class_name: "Category",
+    foreign_key: :server_id,
+    primary_key: :id,
+    dependent: :destroy
+  )
 end

@@ -25,3 +25,6 @@ mod3_in_fantasy = ServersUser.create!(user_id: mod3.id, server_id: fantasybball_
 insider_in_fantasy = ServersUser.create!(user_id: nba_insider.id, server_id: fantasybball_server.id)
 test_in_fantasy = ServersUser.create!(user_id: testUser.id, server_id: fantasybball_server.id)
 
+# Default Category (for seed)
+default_cat1 = Category.create!(server_id: nba_server.id, name: "Text Channels")
+default_cat2 = Category.create!(server_id: fantasybball_server.id, name: "Text Channels")
