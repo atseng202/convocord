@@ -8,6 +8,11 @@ class Category < ApplicationRecord
     primary_key: :id
   )
 
-
-
+  has_many(
+    :channels,
+    class_name: "Channel",
+    foreign_key: :category_id,
+    primary_key: :id,
+    dependent: :destroy
+  )
 end 

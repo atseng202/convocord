@@ -28,3 +28,6 @@ test_in_fantasy = ServersUser.create!(user_id: testUser.id, server_id: fantasybb
 # Default Category (for seed)
 default_cat1 = Category.create!(server_id: nba_server.id, name: "Text Channels")
 default_cat2 = Category.create!(server_id: fantasybball_server.id, name: "Text Channels")
+
+default_channel1 = Channel.create!(category_id: default_cat1.id, name: "general")
+default_channel2 = Channel.create!(category_id: default_cat2.id, name: "general")
