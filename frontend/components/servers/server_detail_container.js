@@ -4,7 +4,8 @@ import ServerDetail from './server_detail';
 
 const mapStateToProps = (state, ownProps) => ({
   server: state.entities.servers[ownProps.match.params.serverId],
-  categories: Object.values(state.entities.categories)
+  categories: Object.values(state.entities.categories),
+  channels: Object.values(state.entities.channels)
 });
 
 const mapDispatchToProps = dispatch => ({

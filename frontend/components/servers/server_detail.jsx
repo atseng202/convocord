@@ -17,7 +17,7 @@ class ServerDetail extends React.Component {
   }
 
   render() {
-    const { server, categories } = this.props;
+    const { server, categories, channels } = this.props;
     const serverName = server && server.name;
 
     const categoriesSection = (
@@ -32,12 +32,14 @@ class ServerDetail extends React.Component {
             </header>
           </div> 
 
-          <div className="channels-rowContainer">
-            <button className="channel-content">
-              <div className="channel-hashtag">#</div>
-              <span className="channel-name">general</span>
-            </button>
-          </div>
+          {channels.filter( possibleChannel => possibleChannel.category_id === category.id).map( channel =>
+            <div key={channel.id} className="channels-rowContainer">
+              <button className="channel-content">
+                <div className="channel-hashtag">#</div>
+                <span className="channel-name">{channel.name}</span>
+              </button>
+            </div>
+          )}
 
         </div>
         )}
