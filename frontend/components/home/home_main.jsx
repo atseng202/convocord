@@ -24,7 +24,7 @@ class HomeMain extends React.Component {
       <div className="home-div">
         <section className="home-main">
           <Route path={["/servers/@me", "/servers/:serverId"]} component={ServerIndexContainer} />
-          <Route exact path="/servers/:serverId" component={ServerDetailContainer} />
+          <Route path="/servers/:serverId" component={ServerDetailContainer} />
           <Route exact path="/servers/@me" component={HomeIndex} />
           <Route exact path="/servers/@me" component={FriendIndex} />
 

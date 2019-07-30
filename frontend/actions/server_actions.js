@@ -38,7 +38,10 @@ export const fetchServers = () => dispatch => {
 
 export const fetchServer = serverId => dispatch => {
   return ServerAPIUtil.fetchServer(serverId).then(
-    server => dispatch(receive_server(server))
+    server => {
+      dispatch(receive_server(server));
+      return server;
+    } 
   );
 };
 

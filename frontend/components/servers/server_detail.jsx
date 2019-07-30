@@ -1,22 +1,46 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class ServerDetail extends React.Component {
   constructor(props) {
     super(props);
+
+    this.fetchServerInfo = this.fetchServerInfo.bind(this);
   }
 
   componentDidMount() {
-    this.props.requestSingleServer(this.props.match.params.serverId);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.match.params.serverId !== this.props.match.params.serverId) {
-      this.props.requestSingleServer(this.props.match.params.serverId);
+    // this.props.requestSingleServer(this.props.match.params.serverId);
+    if (this.props.match.params.serverId !== "@me") {
+      this.fetchServerInfo(this.props.match.params.serverId);
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.serverId !== this.props.match.params.serverId && this.props.match.params.serverId !== "@me") {
+      // this.props.requestSingleServer(this.props.match.params.serverId);
+      this.fetchServerInfo(this.props.match.params.serverId);
+    }
+  }
+
+  fetchServerInfo(serverId) {
+    this.props.requestSingleServer(serverId).then(
+      updatedServer => {
+        const categories = Object.values((updatedServer.categories ? updatedServer.categories : {}));
+        const channels = Object.values((updatedServer.channels ? updatedServer.channels : {}));
+
+        if (categories.length > 0) {
+          const firstCategory = categories[0];
+          if (channels.length > 0) {
+            const matchingChannel = channels.find(channel => channel.category_id === firstCategory.id);
+            this.props.history.push(`/servers/${serverId}/categories/${firstCategory.id}/channels/${matchingChannel.id}`)
+          }
+        }
+      }
+    );
+  }
+
   render() {
+    if (this.props.match.params.serverId === "@me") { return null; }
     const { server, categories, channels } = this.props;
     const serverName = server && server.name;
 
@@ -34,10 +58,12 @@ class ServerDetail extends React.Component {
 
           {channels.filter( possibleChannel => possibleChannel.category_id === category.id).map( channel =>
             <div key={channel.id} className="channels-rowContainer">
-              <button className="channel-content">
+              
+              <Link to={`/servers/${server.id}/categories/${category.id}/channels/${channel.id}`} className="channel-content">
                 <div className="channel-hashtag">#</div>
                 <span className="channel-name">{channel.name}</span>
-              </button>
+              </Link>
+                
             </div>
           )}
 
