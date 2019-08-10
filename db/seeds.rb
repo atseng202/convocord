@@ -31,3 +31,7 @@ default_cat2 = Category.create!(server_id: fantasybball_server.id, name: "Text C
 
 default_channel1 = Channel.create!(category_id: default_cat1.id, name: "general")
 default_channel2 = Channel.create!(category_id: default_cat2.id, name: "general")
+
+msg1_in_channel1 = Message.create!(author_id: testUser.id, content: "Welcome to NBA Server!", messageable: default_channel1)
+msg2_in_channel1 = Message.create!(author_id: gage.id, content: "Woohoo!", messageable: default_channel1)
+msg3_in_channel1 = Message.create!(author_id: mod1.id, content: "Welcome to NBA Server!", messageable: default_channel1)

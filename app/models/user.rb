@@ -22,6 +22,14 @@ class User < ApplicationRecord
     source: :server
   )
 
+  has_many(
+    :messages,
+    class_name: "Message",
+    foreign_key: :author_id,
+    primary_key: :id,
+    dependent: :destroy
+  )
+
   def self.generate_session_token 
     SecureRandom::urlsafe_base64(16)
   end 
