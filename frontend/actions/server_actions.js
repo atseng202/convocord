@@ -11,6 +11,8 @@ export const RECEIVE_SERVER_ERRORS = 'RECEIVE_SERVER_ERRORS';
 
 export const CLEAR_SERVER_ERRORS = 'CLEAR_SERVER_ERRORS';
 
+export const SELECT_SERVER_CHANNEL = 'SELECT_SERVER_CHANNEL';
+
 export const receive_servers = servers => ({
   type: RECEIVE_SERVERS,
   servers
@@ -30,6 +32,7 @@ export const clear_server_errors = () => ({
   type: CLEAR_SERVER_ERRORS
 });
 
+// Action Creators
 export const fetchServers = () => dispatch => {
   return ServerAPIUtil.fetchServers().then(
     servers => dispatch(receive_servers(servers))
@@ -55,10 +58,16 @@ export const createSingleServer = formServer => dispatch => {
   );
 };
 
+// Server UI Actions
 export const openServerForm = () => ({
   type: OPEN_SERVER_FORM
 });
 
 export const closeServerForm = () => ({
   type: CLOSE_SERVER_FORM
+});
+
+export const selectServerChannel = channelId => ({
+  type: SELECT_SERVER_CHANNEL,
+  channelId
 });
