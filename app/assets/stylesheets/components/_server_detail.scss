@@ -1,14 +1,21 @@
 .server-detail {
-  background-color: $light-black;
-  width: 240px;
+  // background-color: $light-black;
+  // width: 240px;
+
+  display: flex;
+  flex: 1 1 auto;
 }
 
 .serverDetailContainer {
+  background-color: $light-black;
+  width: 240px;
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
+  // flex: 1 1 auto;
 
   background-color: $light-black;
+
+  flex-shrink: 0;
 }
 
 .serverDetail-headerChild {
@@ -111,7 +118,8 @@
   margin-right: 8px;
 }
 
-.channel-content:focus {
+// changing from hover to conditional classes
+.channel-hovered {
   background-color: $darker-grey;
 }
 
@@ -123,4 +131,10 @@
   box-sizing: border-box;
   padding: 8px 8px;
   width: 100%;
+}
+
+// Tentative ChannelDetail stylings
+.channelDetailContainer {
+  background: $darker-grey;
+  flex-grow: 1;
 }

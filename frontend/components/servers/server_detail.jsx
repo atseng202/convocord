@@ -1,5 +1,8 @@
 import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter, Link, Route } from 'react-router-dom';
+import ChannelDetail from '../channels/channel_detail';
+
+import ServerCategoryIndex from './server_category_index';
 
 class ServerDetail extends React.Component {
   constructor(props) {
@@ -20,6 +23,15 @@ class ServerDetail extends React.Component {
       // this.props.requestSingleServer(this.props.match.params.serverId);
       this.fetchServerInfo(this.props.match.params.serverId);
     }
+    else if (
+      (this.props.match.params.serverId !== "@me") && 
+      (prevProps.location.pathname !== this.props.location.pathname) && 
+      (prevProps.match.params.serverId === this.props.match.params.serverId) && 
+      (prevProps.location.pathname.includes("channels"))
+      ) {
+      // server id is still the same, but we have clicked a server link which does not have the full path to a channel
+      this.props.history.goBack();
+    } 
   }
 
   fetchServerInfo(serverId) {
@@ -32,7 +44,7 @@ class ServerDetail extends React.Component {
           const firstCategory = categories[0];
           if (channels.length > 0) {
             const matchingChannel = channels.find(channel => channel.category_id === firstCategory.id);
-            this.props.history.push(`/servers/${serverId}/categories/${firstCategory.id}/channels/${matchingChannel.id}`)
+            this.props.history.push(`/servers/${serverId}/categories/${firstCategory.id}/channels/${matchingChannel.id}`);
           }
         }
       }
@@ -43,37 +55,7 @@ class ServerDetail extends React.Component {
     if (this.props.match.params.serverId === "@me") { return null; }
     const { server, categories, channels } = this.props;
     const serverName = server && server.name;
-
-    const categoriesSection = (
-      <section className="serverDetail-channelsContainer">
-        {categories.map((category, idx) => 
-        <div className="serverDetail-categoryWrapper" key={category.id}>
-
-          <div className="channels-rowContainer-header">
-            <header className="channels-header">
-              <span className="channels-header-name">{category.name}</span>
-              <button className="channels-addButton">+</button>
-            </header>
-          </div> 
-
-          {channels.filter( possibleChannel => possibleChannel.category_id === category.id).map( channel =>
-            <div key={channel.id} className="channels-rowContainer">
-              
-              <Link to={`/servers/${server.id}/categories/${category.id}/channels/${channel.id}`} className="channel-content">
-                <div className="channel-hashtag">#</div>
-                <span className="channel-name">{channel.name}</span>
-              </Link>
-                
-            </div>
-          )}
-
-        </div>
-        )}
-
-      </section>
-      
-    );
-
+    
     return (
       <div className="server-detail">
         <div className="serverDetailContainer">
@@ -86,11 +68,12 @@ class ServerDetail extends React.Component {
             </div>
           </section>
 
-  
-          {categoriesSection}
-
-
+          <ServerCategoryIndex server={server} categories={categories} channels={channels}/>
+          
         </div>
+
+        <Route exact path="/servers/:serverId/categories/:categoryId/channels/:channelId" component={ChannelDetail}/>
+
       </div>
     )
   }
