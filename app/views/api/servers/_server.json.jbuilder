@@ -27,3 +27,11 @@ json.channels do
     end 
   end 
 end 
+
+json.users do 
+  server.users.each do |user|
+    json.set! user.id do 
+      json.extract! user, :id, :username, :email 
+    end 
+  end 
+end 

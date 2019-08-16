@@ -10,7 +10,7 @@ class Api::ServersController < ApplicationController
 
   def show 
     if logged_in?
-      @server = Server.includes(:categories).find_by(id: params[:id])
+      @server = Server.includes(:categories).includes(:users).find_by(id: params[:id])
       render :show
     else 
       render json: ["Invalid credentials"], status: 401
