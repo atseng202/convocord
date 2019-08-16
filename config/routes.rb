@@ -25,7 +25,11 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
 
     resources :servers, only: [:index, :show, :create, :update, :destroy]
+
+    resources :channels, only: [:show]
   end 
+
+  mount ActionCable.server => '/cable'
 
   root to: "static_pages#root"
 end
