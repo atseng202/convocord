@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter, Link, Route } from 'react-router-dom';
-import ChannelDetail from '../channels/channel_detail';
+import ChannelDetailContainer from '../channels/channel_detail_container';
 
 import ServerCategoryIndex from './server_category_index';
 
@@ -55,7 +55,7 @@ class ServerDetail extends React.Component {
     if (this.props.match.params.serverId === "@me") { return null; }
     const { server, categories, channels } = this.props;
     const serverName = server && server.name;
-    
+
     return (
       <div className="server-detail">
         <div className="serverDetailContainer">
@@ -72,7 +72,7 @@ class ServerDetail extends React.Component {
           
         </div>
 
-        <Route exact path="/servers/:serverId/categories/:categoryId/channels/:channelId" component={ChannelDetail}/>
+        <Route exact path="/servers/:serverId/categories/:categoryId/channels/:channelId" component={ChannelDetailContainer}/>
 
       </div>
     )
