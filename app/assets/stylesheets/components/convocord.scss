@@ -11,6 +11,9 @@
 @import './server_form';
 @import './server_detail';
 
+// Channel component (part of server_detail)
+@import './channel_detail';
+
 // Home component (contains servers)
 @import './home_main';
 
