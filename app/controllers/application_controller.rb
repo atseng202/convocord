@@ -1,6 +1,13 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
 
+  before_action :set_session_token
+
+  def set_session_token 
+    return unless current_user
+    cookies.signed[:session_token] = current_user.session_token
+  end 
+
   def current_user 
     return nil if session[:session_token].nil?
     @current_user ||= User.find_by(session_token: session[:session_token])
@@ -13,6 +20,8 @@ class ApplicationController < ActionController::Base
   def logout_user
     current_user.try(:reset_session_token!)
     session[:session_token] = nil 
+
+    cookies.signed[:session_token] = nil
   end 
 
   def logged_in? 
