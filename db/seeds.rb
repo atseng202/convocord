@@ -24,6 +24,7 @@ mod2_in_fantasy = ServersUser.create!(user_id: mod2.id, server_id: fantasybball_
 mod3_in_fantasy = ServersUser.create!(user_id: mod3.id, server_id: fantasybball_server.id)
 insider_in_fantasy = ServersUser.create!(user_id: nba_insider.id, server_id: fantasybball_server.id)
 test_in_fantasy = ServersUser.create!(user_id: testUser.id, server_id: fantasybball_server.id)
+gage_in_fantasy = ServersUser.create!(user_id: gage.id, server_id: fantasybball_server.id)
 
 # Default Category (for seed)
 default_cat1 = Category.create!(server_id: nba_server.id, name: "Text Channels")
@@ -31,7 +32,9 @@ default_cat2 = Category.create!(server_id: fantasybball_server.id, name: "Text C
 
 default_channel1 = Channel.create!(category_id: default_cat1.id, name: "general")
 default_channel2 = Channel.create!(category_id: default_cat2.id, name: "general")
+off_topic_channel_in_nba = Channel.create!(category_id: default_cat1.id, name: 'off-topic')
+strategy_channel_in_fantasy = Channel.create!(category_id: default_cat2.id, name: 'strategies')
 
 msg1_in_channel1 = Message.create!(author_id: testUser.id, content: "Welcome to NBA Server!", messageable: default_channel1)
 msg2_in_channel1 = Message.create!(author_id: gage.id, content: "Woohoo!", messageable: default_channel1)
-msg3_in_channel1 = Message.create!(author_id: mod1.id, content: "Welcome to NBA Server!", messageable: default_channel1)
+msg3_in_channel1 = Message.create!(author_id: mod1.id, content: "Glad to be here!", messageable: default_channel1)
