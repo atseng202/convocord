@@ -9,7 +9,6 @@ class ChannelIndexItem extends React.Component {
   }
 
   handleChannelSelect(event) {
-    event.preventDefault();
     const { hoverServerChannel, channel } = this.props;
     hoverServerChannel(channel.id);
   }
