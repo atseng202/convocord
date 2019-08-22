@@ -34,7 +34,9 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  // overflow: hidden;
+
+  // overflow: scroll;
+  overflow-y: scroll;
 }
 
 .channel-welcomeMessage {
@@ -57,7 +59,8 @@
 }
 
 .messageIndexItemContainer {
-  padding: 20px 0;
+  padding: 30px 0;
+  // padding: 40px 0;
   box-sizing: border-box;
 
   display: flex;
@@ -66,4 +69,42 @@
 
 .messageIndexItemContainer > * {
   margin-left: 8px;
+}
+
+// ChannelMessageForm inside ChannelDetail 
+.channelMessageForm {
+  margin: 0 20px;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.channelMessageForm > .message-flex {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.messageAreaContainer {
+  padding-top: 20px;
+  margin-bottom: 30px;
+  border-top: 1px solid $message-grey-border;
+  width: 100%;
+}
+
+.messageArea-inner {
+  background-color: $messageForm-grey;
+  display: flex;
+  border-radius: 5px;
+}
+
+.messageArea-inner > textarea {
+  font-weight: $regular;
+  font-size: 0.9375rem;
+  height: auto;
+  max-height: 144px;
+  width: 100%;
+  min-height: 20px;
+  margin: 2px 2px 2px 0;
+  padding: 10px;
+  resize: none;
 }

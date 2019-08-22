@@ -27,7 +27,8 @@ class ServerDetail extends React.Component {
       (this.props.match.params.serverId !== "@me") && 
       (prevProps.location.pathname !== this.props.location.pathname) && 
       (prevProps.match.params.serverId === this.props.match.params.serverId) && 
-      (prevProps.location.pathname.includes("channels"))
+      (prevProps.location.pathname.includes("channels")) &&
+      (!this.props.location.pathname.includes("channels"))
       ) {
       // server id is still the same, but we have clicked a server link which does not have the full path to a channel
       this.props.history.goBack();
@@ -45,6 +46,8 @@ class ServerDetail extends React.Component {
           if (channels.length > 0) {
             const matchingChannel = channels.find(channel => channel.category_id === firstCategory.id);
             this.props.history.push(`/servers/${serverId}/categories/${firstCategory.id}/channels/${matchingChannel.id}`);
+            // also update ui for channel selected
+            this.props.hoverServerChannel(matchingChannel.id);
           }
         }
       }
@@ -72,7 +75,7 @@ class ServerDetail extends React.Component {
           
         </div>
 
-        <Route exact path="/servers/:serverId/categories/:categoryId/channels/:channelId" component={ChannelDetailContainer}/>
+        <Route exact path="/servers/:serverId/categories/:categoryId/channels/:channelId" component={ChannelDetailContainer} />
 
       </div>
     )

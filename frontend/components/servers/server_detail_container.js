@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchServer } from '../../actions/server_actions';
+import { fetchServer, selectServerChannel } from '../../actions/server_actions';
 import ServerDetail from './server_detail';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  requestSingleServer: (id) => dispatch(fetchServer(id))
+  requestSingleServer: (id) => dispatch(fetchServer(id)),
+  hoverServerChannel: channelId => dispatch(selectServerChannel(channelId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServerDetail);
