@@ -6,6 +6,21 @@ class ChannelMessageIndex extends React.Component {
   constructor(props) {
     super(props);
 
+    this.messagesEnd = React.createRef();
+  }
+
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    if (this.messagesEnd.current) {
+      this.messagesEnd.current.scrollIntoView({ behavior: "auto" });
+    }
   }
 
   render() {
@@ -20,6 +35,9 @@ class ChannelMessageIndex extends React.Component {
         </div>
         
         {initialMessagesList}
+        <div style={{ float: "left", clear: "both" }} ref={this.messagesEnd}>
+        
+        </div>
       </section>
     );
   }
