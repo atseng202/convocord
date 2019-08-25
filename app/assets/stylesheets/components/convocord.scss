@@ -26,7 +26,8 @@
   width: 100vw;
   min-width: 425px;
   height: 100vh;
-  overflow: scroll;
+  // overflow: scroll;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   background-color: $black;
