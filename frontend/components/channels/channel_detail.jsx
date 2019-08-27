@@ -80,15 +80,23 @@ class ChannelDetail extends React.Component {
     return (
       <div className="channelDetailContainer">
         {channelDetailHeader}
-        <section className="channelDetail-content">
-          <ChannelMessageIndex channel={channel} messages={messages} />
+        <div className="channel-contentWrapper">
+          <div className="channelDetail-messaging">
+            <ChannelMessageIndex channel={channel} messages={messages} />
+            <ChannelMessageForm channel={channel} />
+          </div>
           <ServerMemberIndexContainer />
-        </section>
-        
-        <ChannelMessageForm channel={channel}/>
+        </div>
       </div>
     )
   }
 }
 
 export default withRouter(ChannelDetail);
+
+/* <section className="channelDetail-content">
+          <ChannelMessageIndex channel={channel} messages={messages} />
+          <ServerMemberIndexContainer />
+        </section>
+        
+        <ChannelMessageForm channel={channel}/> */

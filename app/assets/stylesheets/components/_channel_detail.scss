@@ -207,3 +207,18 @@
   // overflow-y: scroll;
   overflow-y: auto;
 }
+
+// Rearrangement of flexbox with channel message form 
+.channelDetail-messaging {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  position: relative;
+  min-height: 0;
+}
+
+.channel-contentWrapper {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+}
