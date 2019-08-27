@@ -13,6 +13,7 @@
 
 // Channel component (part of server_detail)
 @import './channel_detail';
+@import './server_members'; // component nested within channel_detail
 
 // Home component (contains servers)
 @import './home_main';
@@ -39,6 +40,9 @@
 .app-div {
   position: relative;
   flex: 1 1 auto;
+  
+  // width: 100%;
+  // height: 100%;
 }
 
 .protected-div {

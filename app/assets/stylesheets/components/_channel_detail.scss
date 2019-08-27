@@ -1,11 +1,10 @@
 // Tentative ChannelDetail stylings
 .channelDetailContainer {
   background: $darker-grey;
-  // flex-grow: 1;
 
   display: flex;
   position: relative;
-  flex: 1;
+  flex: 1 1 auto;
   flex-direction: column;
 }
 
@@ -19,12 +18,18 @@
   font-size: 16px;
 
   box-shadow: $header-black-shadow;
+
+  overflow: hidden;
+  position: relative;
+  flex: 0 0 auto;
 }
 
 .channelDetailHeader {
   display: flex;
   align-items: center;
   flex: 1 1 auto;
+  
+  position: relative;
 }
 
 // message index is sub-component in ChannelDetail
@@ -32,23 +37,19 @@
   // flex: 1 1 auto;
   // overflow: auto;
   display: flex;
-  flex: 1;
+  // flex: 1;
+  flex: 1 1 auto;
   flex-direction: column;
 
   // overflow: scroll;
-  overflow-y: scroll;
-  scrollbar-color:red yellow;
+  // overflow-y: scroll; changing to the bottom
+  overflow: hidden;
+  
 }
 
 ::-webkit-scrollbar {
     height: 2px;
     width: 8px;
-    background: #000;
-}
-
-::-webkit-scrollbar {
-    height: 12px;
-    width: 12px;
     background: #000;
 }
 
@@ -73,6 +74,8 @@
   height: 95px;
   box-sizing: border-box;
   border-bottom: 1px solid hsla(0,0%,100%,.02);
+
+  min-height: 95px;
 }
 
 .channel-welcomeMessage h1 {
@@ -188,4 +191,19 @@
   margin: 2px 2px 2px 0;
   padding: 10px;
   resize: none;
+}
+
+// ChannelDetail content parent 
+.channelDetail-content {
+  display: flex;
+  flex: 1 1 auto;
+  position: relative;
+
+  min-height: 0; // setting min-height undos flex auto as per https://stackoverflow.com/questions/34144972/flexbox-avoid-child-with-longer-height-than-parent-column-direction
+}
+
+// Figuring out how to fix this broken layout with addition of content 
+.messagesWrapper {
+  // overflow-y: scroll;
+  overflow-y: auto;
 }

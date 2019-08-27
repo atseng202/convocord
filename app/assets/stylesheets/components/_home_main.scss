@@ -16,6 +16,17 @@
   display: none;
 }
 
+// Commented out for now but will revisit if I need parent divs to fill container 
 .home-main {
   display: flex;
+  // flex: 1 1 auto;
+}
+
+.home-div {
+  // position: absolute;
+  // top: 0;
+  // right: 0;
+  // bottom: 0;
+  // left: 0;
+
 }
