@@ -1,0 +1,69 @@
+.membersWrapper {
+  min-width: 240px;
+  display: flex;
+  position: relative;
+}
+
+.membersScrollWrap {
+  display: flex;
+  position: relative;
+  flex: 1 1 auto;
+  height: 100%;
+
+}
+
+.membersScroll {
+  background-color: $light-black;
+  box-sizing: border-box;
+  max-width: 240px;
+  padding-bottom: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  flex: 1;
+}
+
+.membersHeader {
+  color: $members-header-grey;
+  overflow: hidden;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: $regular-bold;
+  letter-spacing: 1.25px;
+  padding: 16px 8px 0 16px;
+}
+
+.memberItem {
+  display: flex;
+  cursor: pointer;
+  box-sizing: border-box;
+  align-items: center;
+  overflow: hidden;
+  height: 40px;
+  margin: 4px 0 2px 8px;
+  padding: 0 8px;
+}
+
+.membersAvatar-wrapper {
+  background-color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  opacity: 1;
+  margin-right: 10px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.memberItem-inner {
+  box-sizing: border-box;
+  width: 170px;
+}
+
+.memberItem-inner > .memberItem-content {
+  color: rgb(96, 125, 139);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

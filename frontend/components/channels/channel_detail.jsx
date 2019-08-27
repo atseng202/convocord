@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom';
 import ChannelMessageIndex from './channel_message_index';
 import ChannelMessageForm from './channel_message_form';
 
+import ServerMemberIndexContainer from '../servers/server_member_index_container';
+
 class ChannelDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -78,7 +80,11 @@ class ChannelDetail extends React.Component {
     return (
       <div className="channelDetailContainer">
         {channelDetailHeader}
-        <ChannelMessageIndex channel={channel} messages={messages}/>
+        <section className="channelDetail-content">
+          <ChannelMessageIndex channel={channel} messages={messages} />
+          <ServerMemberIndexContainer />
+        </section>
+        
         <ChannelMessageForm channel={channel}/>
       </div>
     )
