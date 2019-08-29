@@ -16,10 +16,6 @@ class HomeMain extends React.Component {
   }
 
   render() {
-    // conditionally render ServerForm and overlay if addServer
-    // pressed in ServerIndex
-    const serverForm = this.props.serverFormOpen ? <ServerFormContainer /> : null;
-    const overlay = this.props.serverFormOpen ? <section id="overlay" className="overlay"></section> : null;
     return (
       <div className="home-div">
         <section className="home-main">
@@ -30,9 +26,7 @@ class HomeMain extends React.Component {
 
           
         </section>
-
-        {overlay}
-        {serverForm}
+        <ServerFormContainer />
       </div>
 
     );

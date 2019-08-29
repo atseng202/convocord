@@ -1,3 +1,5 @@
+@import './colors.scss';
+
 .marginBottom8 {
   margin-bottom: 8px;
 }
@@ -14,3 +16,46 @@
   margin-top: 20px;
 }
 
+.Modal {
+  position: absolute;
+  // top: 40px;
+  left: 50%;
+  top: 50%;
+  // left: 40px;
+  // right: 40px;
+  // bottom: 40px;
+  // border: 1px solid rgb(204, 204, 204);
+  // background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  // padding: 20px;
+  
+  width:  540px;
+  text-align: center;
+  margin-left: -270px;
+  margin-top: -210px;
+  display: flex;
+  max-height: 420px;
+  background-color: $white;
+  box-sizing: border-box;
+  // z-index: 5000;
+  // opacity: 1;
+
+
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.85);
+  // opacity: 0.85;
+  z-index: 1;
+}
+
+.ReactModalPortal {
+  font-family: Whitney, Helvetica Neue, Helvetica, Arial, sans-serif;
+}

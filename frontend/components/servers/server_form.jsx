@@ -1,10 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom'; 
 
+import ReactModal from 'react-modal';
+
 class ServerForm extends React.Component {
   constructor(props) {
     super(props);
-
+    
     this.state = { 
       onLandingForm: true,
       serverName: ""
@@ -21,10 +23,10 @@ class ServerForm extends React.Component {
 
   closeServerForm(event) {
     event.preventDefault();
-    if (event.currentTarget === event.target) {
+    // if (event.currentTarget === event.target) {
       this.props.closeServerForm();
       this.props.clearServerErrors();
-    }
+    // }
   }
 
   changeToServerForm(event) {
@@ -107,14 +109,24 @@ class ServerForm extends React.Component {
       );
 
     return (
-      <div className="modal-wrapper" onClick={this.closeServerForm}>
-          <div className="serverForm-box">
-            {serverFormPage}
-          </div>
-      </div>
+      <ReactModal 
+      isOpen={this.props.serverFormOpen}
+      className="Modal"
+      overlayClassName="Overlay"
+      onRequestClose={this.closeServerForm}
+      shouldCloseOnOverlayClick={true}
+      >
+        {serverFormPage}
+      </ReactModal>
 
     );
   }
 }
 
 export default withRouter(ServerForm);
+
+// <div className="modal-wrapper" onClick={this.closeServerForm}>
+//     <div className="serverForm-box">
+//       {serverFormPage}
+//     </div>
+// </div>

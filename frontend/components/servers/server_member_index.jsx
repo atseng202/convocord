@@ -24,7 +24,7 @@ class ServerMemberIndex extends React.Component {
             <ServerMemberIndexItem member={moderator} />
 
             <div className="membersHeader">
-              members - ?
+              members - {members.length - 1}
             </div>
 
             {membersMap}

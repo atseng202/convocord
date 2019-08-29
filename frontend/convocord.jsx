@@ -5,6 +5,8 @@ import Root from './components/root';
 
 import * as ServerAPIUtil from './util/server_api_util';
 
+import ReactModal from 'react-modal';
+
 document.addEventListener("DOMContentLoaded", () => {
   // let store = configureStore();
   let store;
@@ -27,5 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.createNewServer = ServerAPIUtil.createServer;
 
   const root = document.getElementById("root");
+  ReactModal.setAppElement("#root");
   ReactDOM.render(< Root store={store}/>, root);
 });
