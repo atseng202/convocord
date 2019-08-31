@@ -27,14 +27,15 @@ class ServerCategoryIndexItem extends React.Component {
   }
 
   render() {
-    const { server, category, channels } = this.props;
+    const { server, category, channels, isModerator } = this.props;
+    const addButton = isModerator ? <button className="channels-addButton" onClick={this.handleOpenChannelModal}>+</button> : null;
     return (
       <div className="serverDetail-categoryWrapper" key={category.id}>
 
         <div className="channels-rowContainer-header">
           <header className="channels-header">
             <span className="channels-header-name">{category.name}</span>
-            <button className="channels-addButton" onClick={this.handleOpenChannelModal}>+</button>
+            {addButton}
           </header>
         </div>
 

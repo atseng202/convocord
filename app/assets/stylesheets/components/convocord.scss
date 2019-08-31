@@ -25,11 +25,12 @@
 
 #root {
   position: absolute;
-  width: 100vw;
+  width: 100%;
   min-width: 425px;
-  height: 100vh;
-  // overflow: scroll;
-  overflow: hidden;
+  min-height: 100vh;
+  // height: 100%;
+  // overflow: hidden;
+  overflow: auto;
   display: flex;
   flex-direction: column;
   background-color: $black;
