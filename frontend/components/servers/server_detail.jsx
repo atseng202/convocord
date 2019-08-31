@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter, Link, Route } from 'react-router-dom';
 import ChannelDetailContainer from '../channels/channel_detail_container';
 
-import ServerCategoryIndex from './server_category_index';
+import ServerCategoryIndexContainer from './server_category_index_container';
 
 class ServerDetail extends React.Component {
   constructor(props) {
@@ -71,7 +71,7 @@ class ServerDetail extends React.Component {
             </div>
           </section>
 
-          <ServerCategoryIndex server={server} categories={categories} channels={channels}/>
+          <ServerCategoryIndexContainer server={server} categories={categories} channels={channels}/>
           
         </div>
 

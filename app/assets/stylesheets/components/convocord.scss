@@ -14,6 +14,7 @@
 // Channel component (part of server_detail)
 @import './channel_detail';
 @import './server_members'; // component nested within channel_detail
+@import './channel_form';
 
 // Home component (contains servers)
 @import './home_main';

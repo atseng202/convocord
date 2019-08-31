@@ -1,0 +1,121 @@
+.channelForm {
+  display: flex;
+  flex-direction: column;
+  width: 440px;
+  flex: 1;
+  min-height: 200px;
+  max-height: 660px;
+  // background-color: $darker-grey;
+  box-sizing: border-box;
+}
+
+.channelForm-header {
+  flex: 0 0 auto;
+  padding: 20px;
+  overflow-x: hidden;
+  // z-index: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.channelForm-header-child {
+  flex: 1 1 auto;
+  text-align: left;
+}
+
+.channelForm-header-child > h4 {
+  color: $font-white;
+  font-size: 16px;
+  font-weight: $bold;
+  text-transform: uppercase;
+  line-height: 20px;
+}
+
+.channelForm-header-subtitle {
+  color: $label-grey;
+  font-size: 12px;
+}
+
+.channelForm-name {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  // align-items: flex-start;
+  margin-bottom: 20px;
+  padding-right: 12px;
+  padding-left: 20px;
+}
+
+.channelForm-name > h5 {
+  color: $label-grey;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: $bold;
+}
+
+.channelForm-inputWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.channelForm-nameInput {
+  color: $font-white;
+  background-color: $input-black;
+  border: 1px solid $input-dark;
+  border-radius: 3px;
+  padding: 10px;
+  height: 40px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.channelForm-nameInput:focus {
+  border: 1px solid $button-blue;
+}
+
+.channelForm-footer {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.channelForm-submit, .channelForm-cancel {
+  color: $white;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: $regular-bold;
+  padding: 2px 16px;
+}
+
+.channelForm-submit > .button-content {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.channelForm-submit {
+  background-color: $button-blue;
+}
+
+.channelForm-submit:hover {
+  background-color: $button-hover-blue;
+}
+
+.channelForm-cancel:hover {
+  text-decoration: underline;
+}
+
+.channelForm-errors {
+  color: $red;
+}
+
+.channelForm-errors > li {
+  margin-bottom: 4px;
+}
