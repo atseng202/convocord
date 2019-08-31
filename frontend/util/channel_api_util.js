@@ -6,3 +6,12 @@ export const fetchChannel = channelId => (
   })
 );
 
+export const createChannel = formChannel => (
+  $.ajax({
+    method: 'POST',
+    url: '/api/channels',
+    data: formChannel,
+    contentType: false,
+    processData: false
+  })
+);
