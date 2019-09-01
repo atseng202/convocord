@@ -57,23 +57,6 @@ class ServerCategoryIndexItem extends React.Component {
   }
 } 
 
-// const ServerCategoryIndexItem = ({server, category, channels}) => (
-//   <div className="serverDetail-categoryWrapper" key={category.id}>
-
-//     <div className="channels-rowContainer-header">
-//       <header className="channels-header">
-//         <span className="channels-header-name">{category.name}</span>
-//         <button className="channels-addButton">+</button>
-//       </header>
-//     </div>
-
-//     {channels.filter(possibleChannel => possibleChannel.category_id === category.id).map(channel =>
-//       <ChannelIndexItemContainer server={server} channel={channel} category={category} key={channel.id}/>
-//     )}
-
-//   </div>
-// );
-
 export default ServerCategoryIndexItem;
 
 

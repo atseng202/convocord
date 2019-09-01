@@ -18,6 +18,7 @@
   background-color: $light-black;
 
   flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .serverDetail-headerChild {
@@ -114,6 +115,8 @@
   align-items: center;
   width: 100%;
   height: 100%;
+
+  color: $grey;
 }
 
 .channel-hashtag {
@@ -125,6 +128,7 @@
 // changing from hover to conditional classes
 .channel-hovered {
   background-color: $darker-grey;
+  color: $white;
 }
 
 .channel-name {

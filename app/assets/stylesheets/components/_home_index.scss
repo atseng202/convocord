@@ -1,0 +1,47 @@
+.homeDetail-messagesContainer {
+  padding-top: 20px;
+  padding-bottom: 8px;
+}
+
+.friendsContainer {
+  box-sizing: border-box;
+  font-size: 14px;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 1px 0;
+  height: 44px;
+}
+
+.friendsContainer a {
+  margin: 0 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: $regular;
+  padding: 0 8px;
+  border-radius: 3px;
+  color: $grey;
+  height: 42px;
+}
+
+.friendIcon {
+  margin-right: 12px;
+}
+
+.friendsContainer a:focus {
+  color: $white;
+  background-color: $home-focus-grey;
+}
+
+.homeDetail-messagesContainer header {
+  font-size: 12px;
+  color: $white;
+  opacity: 0.3;
+  text-transform: uppercase;
+  font-weight: $regular-bold;
+  padding: 10px 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-top: 12px;
+}
