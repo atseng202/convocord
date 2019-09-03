@@ -61,7 +61,11 @@ class ChannelDetail extends React.Component {
   }
   
   componentWillUnmount() {
-    App.cable.subscriptions.subscriptions[0].disconnected();
+    const { match } = this.props;
+    // App.cable.subscriptions.subscriptions[0].disconnected();
+    if (App[`room_channel-${match.params.channelId}`]) {
+      App[`room_channel-${match.params.channelId}`].disconnected();
+    }
   }
 
   render() {

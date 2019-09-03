@@ -20,8 +20,12 @@
   font-weight: $regular;
   padding: 0 8px;
   border-radius: 3px;
-  color: $grey;
+  // color: $grey;
   height: 42px;
+}
+
+.normalState {
+  color: $grey;
 }
 
 .friendIcon {
@@ -29,6 +33,11 @@
 }
 
 .friendsContainer a:focus {
+  // color: $white;
+  // background-color: $home-focus-grey;
+}
+
+.focusedContainer {
   color: $white;
   background-color: $home-focus-grey;
 }
