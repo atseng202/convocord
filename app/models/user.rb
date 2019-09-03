@@ -30,6 +30,24 @@ class User < ApplicationRecord
     dependent: :destroy
   )
 
+  has_many(
+    :received_privateservers,
+    class_name: "Privateserver",
+    foreign_key: :recipient_id,
+    primary_key: :id
+  )
+
+  has_many(
+    :sent_privateservers,
+    class_name: "Privateserver",
+    foreign_key: :sender_id,
+    primary_key: :id
+  )
+
+  def active_privateservers
+    self.sent_privateservers.where(is_active: true) + self.received_privateservers.where(is_active: true)
+  end
+
   def self.generate_session_token 
     SecureRandom::urlsafe_base64(16)
   end 

@@ -1,0 +1,1 @@
+json.partial! 'api/privateservers/privateserver', privateserver: @privateserver
