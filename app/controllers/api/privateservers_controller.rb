@@ -17,7 +17,7 @@ class Api::PrivateserversController < ApplicationController
   end 
 
   def create 
-    @privateserver = Privateserver.includes(:messages).get(current_user.id, privateserver_params[:privateserver][:recipient_id])
+    @privateserver = Privateserver.includes(:messages).get(current_user.id, params[:privateserver][:recipient_id])
     @privateserver.is_active = true
     if @privateserver.save
       render :show 

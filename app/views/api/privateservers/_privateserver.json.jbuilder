@@ -1,6 +1,7 @@
 json.privateserver do 
-  json.extract! privateserver, :id
-  json.correspondent_id privateserver.corresponding_user(current_user)
+  json.extract! privateserver, :id, :is_active
+  json.correspondent_id privateserver.corresponding_user(current_user).id
+  json.correspondent_username privateserver.corresponding_user(current_user).username
   json.message_ids privateserver.messages.pluck(:id)
 end
 

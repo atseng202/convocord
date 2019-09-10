@@ -44,9 +44,25 @@ class User < ApplicationRecord
     primary_key: :id
   )
 
+  # has_many(
+  #   :senders,
+  #   through: :received_privateservers,
+  #   source: :sender
+  # )
+
+  # has_many(
+  #   :recipients,
+  #   through: :sent_privateservers,
+  #   source: :recipient
+  # )
+
   def active_privateservers
     self.sent_privateservers.where(is_active: true) + self.received_privateservers.where(is_active: true)
   end
+
+  # def active_correspondent_users
+  #   self.senders.where("privateservers.is_active = ?", true) + self.recipients.where("privateservers.is_active = ?", true)
+  # end 
 
   def self.generate_session_token 
     SecureRandom::urlsafe_base64(16)
