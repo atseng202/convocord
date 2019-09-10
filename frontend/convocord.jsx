@@ -6,6 +6,7 @@ import Root from './components/root';
 import * as ServerAPIUtil from './util/server_api_util';
 
 import ReactModal from 'react-modal';
+import * as PrivateserverAPIUtil from './util/privateserver_api_util';
 
 document.addEventListener("DOMContentLoaded", () => {
   // let store = configureStore();
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.dispatch = store.dispatch;
 
   window.createNewServer = ServerAPIUtil.createServer;
+  window.PrivateserverAPIUtil = PrivateserverAPIUtil;
 
   const root = document.getElementById("root");
   ReactModal.setAppElement("#root");

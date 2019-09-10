@@ -1,18 +1,23 @@
 import React from 'react';
 import ServerIndexContainer from '../servers/server_index_container';
-import HomeIndex from './home_index';
+import HomeIndexContainer from './home_index_container';
 import FriendIndex from '../friends/friend_index';
 
-import ServerForm from '../servers/server_form';
 import ServerFormContainer from '../servers/server_form_container';
-
 import ServerDetailContainer from '../servers/server_detail_container';
-
 import { Route } from 'react-router-dom';
 
 class HomeMain extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchPrivateservers();
+  }
+  
+  componentDidUpdate() {
+    
   }
 
   render() {
@@ -21,7 +26,7 @@ class HomeMain extends React.Component {
         <section className="home-main">
           <Route path={["/servers/@me", "/servers/:serverId"]} component={ServerIndexContainer} />
           <Route path="/servers/:serverId" component={ServerDetailContainer} />
-          <Route exact path="/servers/@me" component={HomeIndex} />
+          <Route path="/servers/@me" component={HomeIndexContainer} />
           {/* <Route exact path="/servers/@me" component={FriendIndex} /> */}
 
           
