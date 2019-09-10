@@ -10,7 +10,7 @@ class ServerIndex extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchServers();
   }
 
