@@ -2,6 +2,7 @@ import React from 'react';
 import FriendIndex from '../friends/friend_index';
 import { Link, Route, NavLink } from 'react-router-dom';
 import PrivateserverIndexItem from '../privateservers/privateserver_index_item';
+import PrivateserverDetailContainer from '../privateservers/privateserver_detail_container';
 
 class HomeIndex extends React.Component {
   constructor(props) {
@@ -36,6 +37,7 @@ class HomeIndex extends React.Component {
         </div>
 
         <Route exact path="/servers/@me" component={FriendIndex} />
+        <Route exact path="/servers/@me/:privateserverId" component={PrivateserverDetailContainer} />
       </div>
     );
   }

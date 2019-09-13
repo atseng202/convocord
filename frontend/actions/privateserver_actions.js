@@ -17,6 +17,7 @@ export const fetchPrivateserver = privateserverId => dispatch => {
   return PrivateserverAPIUtil.fetchPrivateserver(privateserverId).then(
     privateserver => {
       dispatch(receive_privateserver(privateserver));
+      return privateserver;
     }
   );
 };

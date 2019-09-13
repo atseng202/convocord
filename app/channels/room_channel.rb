@@ -1,7 +1,9 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed 
     if params[:channel_id].present?
-      stream_from("room_channel-#{(params[:channel_id])}")
+      stream_from("room_channel_public-#{(params[:channel_id])}")
+    elsif params[:privateserver_id].present?
+      stream_from("room_channel_private-#{(params[:privateserver_id])}")
     end 
   end 
 

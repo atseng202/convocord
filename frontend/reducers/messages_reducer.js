@@ -1,5 +1,6 @@
 import { RECEIVE_CHANNEL } from '../actions/channel_actions';
 import { RECEIVE_MESSAGE } from '../actions/message_actions';
+import { RECEIVE_PRIVATESERVER } from '../actions/privateserver_actions';
 
 const _initialState = {};
 
@@ -15,6 +16,8 @@ const messagesReducer = (state = _initialState, action) => {
         ...state, 
         [action.message.id]: action.message
       };
+    case RECEIVE_PRIVATESERVER:
+      return action.privateserver.messages ? action.privateserver.messages : _initialState;
     default:
       return state;
   }
