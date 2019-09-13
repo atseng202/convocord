@@ -5,6 +5,18 @@ json.privateserver do
   json.message_ids privateserver.messages.pluck(:id)
 end
 
+json.users do
+  correspondent = privateserver.corresponding_user(current_user)
+
+  json.set! current_user.id do 
+    json.extract! current_user, :id, :username, :email
+  end
+
+  json.set! correspondent.id do 
+    json.extract! correspondent, :id, :username, :email
+  end
+end
+
 json.messages do 
   privateserver.messages.each do |message|
     json.set! message.id do 
