@@ -28,7 +28,9 @@ Rails.application.routes.draw do
 
     resources :channels, only: [:show, :create]
 
-    resources :privateservers, only: [:index, :show, :create]
+    resources :privateservers, only: [:index, :show, :create, :update]
+
+    resources :messages, only: [:create]
   end 
 
   mount ActionCable.server => '/cable'
