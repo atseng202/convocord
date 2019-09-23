@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ChannelMessageIndexItem = ({message, author}) => (
+const ChannelMessageIndexItem = ({message, author, currentUserId}) => (
   <div className="messageIndexItemContainer">
     <div className="messageIndexItem">
 
@@ -12,7 +12,7 @@ const ChannelMessageIndexItem = ({message, author}) => (
         </div>
 
         <h2 className="messageHeader-details">
-          <span className="username">{author && author.username}</span>
+          <span className={(author && author.id === currentUserId) ? 'username greenText' : 'username blueText'}>{author && author.username}</span>
           <time dateTime={message.created_at}>{message.readable_date} ago</time>
         </h2>
       </header>
