@@ -1,0 +1,67 @@
+.popout-wrapper {
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // z-index: auto;
+  position: absolute;
+  // z-index: 1001;
+  left: -100%;
+}
+
+.popout {
+  z-index: 1001;
+  // left: 372px;
+  // left: 372px;
+  top: 14px;
+  margin: 0 10px;
+  border-radius: 5px;
+  // transform: translateY(0%);
+  // transform: translateX(-100%) translateY(0%) translateZ(0px);
+}
+
+.userPopout {
+  width: 250px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.userPopout-header {
+  background-color: $black;
+  color: $white;
+  line-height: 18px;
+  font-size: 16px;
+}
+
+.userPopout-header-flex {
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.userAvatarBig-wrapper {
+  border-radius: 50%;
+  margin-bottom: 10px;
+  background-color: $white;
+}
+
+.userAvatarBig-wrapper-inner {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userPopout-messageForm {
+  background-color: $light-black;
+  border: 1px solid $quick-message-grey-border;
+  color: hsla(0, 0%, 100%, .8);
+  padding: 10px;
+}
