@@ -10,6 +10,8 @@ import { Route } from 'react-router-dom';
 class HomeMain extends React.Component {
   constructor(props) {
     super(props);
+
+    this.closePopouts = this.closePopouts.bind(this);
   }
 
   componentDidMount() {
@@ -20,10 +22,14 @@ class HomeMain extends React.Component {
     
   }
 
+  closePopouts() {
+    if (this.props.popoutOpen) { this.props.closeUserPopout() };
+  }
+
   render() {
     return (
       <div className="home-div">
-        <section className="home-main">
+        <section className="home-main" onClick={this.closePopouts}>
           <Route path={["/servers/@me", "/servers/:serverId"]} component={ServerIndexContainer} />
           <Route path="/servers/:serverId" component={ServerDetailContainer} />
           <Route path="/servers/@me" component={HomeIndexContainer} />

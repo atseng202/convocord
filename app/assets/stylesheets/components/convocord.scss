@@ -10,6 +10,7 @@
 @import './server_index';
 @import './server_form';
 @import './server_detail';
+@import './server_member_popout';
 
 // Channel component (part of server_detail)
 @import './channel_detail';
@@ -34,7 +35,7 @@
   min-height: 100vh;
   // height: 100%;
   // overflow: hidden;
-  overflow: auto;
+  // overflow: auto;
   display: flex;
   flex-direction: column;
   background-color: $black;

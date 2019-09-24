@@ -128,11 +128,23 @@
   color: $message-header-grey;
 }
 
+.username {
+  color: $white;
+}
+
 .messageHeader-details > .username {
   font-size: 16px;
   font-weight: $regular-bold;
-  color: $white;
+  // color: $white;
   cursor: pointer;
+}
+
+.greenText {
+  color: $username-green;
+}
+
+.blueText {
+  color: $username-blue;
 }
 
 .messageHeader-details > .username:hover {

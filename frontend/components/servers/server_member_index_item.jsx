@@ -1,15 +1,41 @@
 import React from 'react';
+import ServerMemberPopoutContainer from './server_member_popout_container';
 
-const ServerMemberIndexItem = ({member}) => (
-  <div className="memberItem">
-    <div className="membersAvatar-wrapper">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z" /></svg>
-    </div>
+class ServerMemberIndexItem extends React.Component {
+  constructor(props) {
+    super(props);
 
-    <div className="memberItem-inner">
-      <span className="memberItem-content">{member && member.username}</span>
-    </div>
-  </div>
-);
+    this.handlePopout = this.handlePopout.bind(this);
+  }
+
+  handlePopout(e) {
+    e.preventDefault();
+    console.log("Handling popout");
+    const { member, openUserPopout, popoutId, closeUserPopout } = this.props;
+    e.stopPropagation();
+    closeUserPopout();
+    openUserPopout(member);
+  }
+
+
+  render() {
+    const { member, popoutId } = this.props;
+    // const popoutComponent = this.state.memberPopoutActive ? <ServerMemberPopout handlePopout={this.handlePopout}/> : null;
+    // const popoutComponent = (popoutId && popoutId === member.id)  ? <ServerMemberPopout /> : null;
+    return (
+      <div className="memberItem" onClick={this.handlePopout}>
+        <div className="membersAvatar-wrapper" >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z" /></svg>
+        </div>
+
+        <div className="memberItem-inner" >
+          <span className="memberItem-content">{member && member.username}</span>
+        </div>
+
+        <ServerMemberPopoutContainer member={member}/>
+      </div>
+    );
+  }
+}
 
 export default ServerMemberIndexItem;
