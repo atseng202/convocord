@@ -1,4 +1,4 @@
-import { RECEIVE_PRIVATESERVER, RECEIVE_PRIVATESERVERS } from '../actions/privateserver_actions';
+import { RECEIVE_PRIVATESERVER, RECEIVE_PRIVATESERVERS, REMOVE_PRIVATESERVER } from '../actions/privateserver_actions';
 
 const privateserversReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -10,6 +10,10 @@ const privateserversReducer = (state = {}, action) => {
       };
     case RECEIVE_PRIVATESERVERS:
       return action.privateservers;
+    case REMOVE_PRIVATESERVER:
+      let newState = { ...state };
+      delete newState[action.privateserver.privateserver.id];
+      return newState;
     default:
       return state;
   }

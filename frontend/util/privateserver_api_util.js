@@ -24,3 +24,11 @@ export const createPrivateserver = formPrivateserver => (
   })
 );
 
+export const toggleInactivePrivateserver = privateserverId => (
+  $.ajax({
+    method: 'PATCH',
+    url: `/api/privateservers/${privateserverId}`,
+    dataType: 'json'
+  })
+);
+

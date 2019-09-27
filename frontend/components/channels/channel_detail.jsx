@@ -14,7 +14,7 @@ class ChannelDetail extends React.Component {
     const { requestSingleChannel, match, receiveMessage } = this.props;
     requestSingleChannel(match.params.channelId).then(
       (channel) => {
-        App[`room_channel-${channel.channel.id}`] = App.cable.subscriptions.create({channel: "RoomChannel", channel_id: channel.channel.id}, {
+        App[`room_channel_public-${channel.channel.id}`] = App.cable.subscriptions.create({channel: "RoomChannel", channel_id: channel.channel.id}, {
           connected: function () { },
           disconnected: function () { App.cable.subscriptions.remove(this); },
           received: function (data) {
@@ -33,15 +33,18 @@ class ChannelDetail extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { requestSingleChannel, match, receiveMessage } = this.props;
+    const { requestSingleChannel, match, receiveMessage, removeMessages } = this.props;
     if (match.params.channelId !== prevProps.match.params.channelId) {
-      if (App[`room_channel-${prevProps.match.params.channelId}`]) {
-        App[`room_channel-${prevProps.match.params.channelId}`].disconnected();
+      if (App[`room_channel_public-${prevProps.match.params.channelId}`]) {
+        App[`room_channel_public-${prevProps.match.params.channelId}`].disconnected();
+
+        // Clear messages for UI purposes before loading new messages
+        removeMessages();
       }
   
       requestSingleChannel(match.params.channelId).then(
         (channel) => {
-          App[`room_channel-${channel.channel.id}`] = App.cable.subscriptions.create({ channel: "RoomChannel", channel_id: channel.channel.id }, {
+          App[`room_channel_public-${channel.channel.id}`] = App.cable.subscriptions.create({ channel: "RoomChannel", channel_id: channel.channel.id }, {
             connected: function () { },
             disconnected: function () { App.cable.subscriptions.remove(this); },
             received: function (data) {
@@ -61,11 +64,15 @@ class ChannelDetail extends React.Component {
   }
   
   componentWillUnmount() {
-    const { match } = this.props;
+    const { match, removeMessages } = this.props;
     // App.cable.subscriptions.subscriptions[0].disconnected();
-    if (App[`room_channel-${match.params.channelId}`]) {
-      App[`room_channel-${match.params.channelId}`].disconnected();
+    if (App[`room_channel_public-${match.params.channelId}`]) {
+      App[`room_channel_public-${match.params.channelId}`].disconnected();
+
+      // Clear messages for UI purposes before loading new messages
+      removeMessages();
     }
+
   }
 
   render() {

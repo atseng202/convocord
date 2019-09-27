@@ -2,6 +2,8 @@ import * as MessageAPIUtil from '../util/message_api_util';
 
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
 
+export const REMOVE_MESSAGES = 'REMOVE_MESSAGES';
+
 export const receive_message = message => ({
   type: RECEIVE_MESSAGE,
   message
@@ -12,3 +14,7 @@ export const createSingleMessage = formMessage => dispatch => {
     message => message
   );
 };
+
+export const remove_messages = () => ({
+  type: REMOVE_MESSAGES
+});

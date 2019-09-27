@@ -26,6 +26,17 @@ class Api::PrivateserversController < ApplicationController
     end 
   end 
 
+  def update 
+    # Only attribute to update is toggling is_active for privateserver
+    @privateserver = Privateserver.find_by(id: params[:id])
+    @privateserver.is_active = false
+    if @privateserver.save 
+      render :show
+    else
+      render json: @privateserver.errors.full_messages, status: 422
+    end  
+  end
+
   private 
 
   def privateserver_params 

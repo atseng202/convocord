@@ -22,6 +22,8 @@
   border-radius: 3px;
   // color: $grey;
   height: 42px;
+  
+  position: relative;
 }
 
 .normalState {
@@ -58,3 +60,29 @@
 .privateserverName {
   font-size: 15px;
 }
+
+.privateserver-inactive-button {
+  display: none;
+}
+
+// Implementing toggle button for removing inactive privateservers
+.friendsContainer a:hover {
+  color: $white;
+  background-color: $privateserver-hover-darkgrey;
+
+  .privateserver-inactive-button {
+    display: block;
+    position: absolute;
+    right: 10px;
+    color: $grey;
+  }
+
+  .privateserver-inactive-button:hover {
+    color: $white;
+  }
+}
+
+// #focusedContainer:hover {
+//     color: $white;
+//     background-color: $home-focus-grey;
+// }

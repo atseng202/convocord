@@ -11,7 +11,8 @@ class HomeIndex extends React.Component {
   }
   
   render() {
-    const privateserversMap = this.props.privateservers.map( (privateserver) => <PrivateserverIndexItem key={privateserver.id} privateserver={privateserver} />);
+    const { removePrivateserver, privateserverIds } = this.props;
+    const privateserversMap = this.props.privateservers.map( (privateserver) => <PrivateserverIndexItem key={privateserver.id} privateserver={privateserver} removePrivateserver={removePrivateserver} privateserverIds={privateserverIds}/>);
 
     return (
       <div className="home-detail server-detail">

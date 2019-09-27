@@ -7,11 +7,23 @@ class Api::MessagesController < ApplicationController
     privateserver.is_active = true
     @message = Message.new(message_params)
     @message.messageable = privateserver
-    if @message.save 
-      render :show
-    else
-      render json: @message.errors.full_messages, status: 422
+
+    ActiveRecord::Base.transaction do 
+      message_saved = @message.save 
+      privateserver_saved = privateserver.save 
+
+      if message_saved && privateserver_saved 
+        render :show
+      else 
+        render json: @message.errors.full_messages, status: 422
+      end 
     end 
+
+    # if @message.save 
+    #   render :show
+    # else
+    #   render json: @message.errors.full_messages, status: 422
+    # end 
   end
 
   private 
