@@ -118,6 +118,7 @@
   height: 32px;
 
   color: $grey;
+  border-radius: 3px;
 }
 
 .channel-hashtag {
@@ -142,3 +143,8 @@
   width: 100%;
 }
 
+// Hovering for channels (similar to DMs hover)
+.channels-rowContainer a:hover {
+  color: $white;
+  background-color: $privateserver-hover-darkgrey;
+}

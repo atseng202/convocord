@@ -86,3 +86,23 @@
 //     color: $white;
 //     background-color: $home-focus-grey;
 // }
+
+// Friend Index (Feature later for adding friends and seeing list)
+.friendIndexContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: center;
+  color: $memberlist-turqoise;
+}
+
+.friendIndexContainer > h1 {
+  font-size: 32px;
+  font-weight: $bolder;
+}
+
+.friendIndexContainer > h4 {
+  color: $button-blue;
+
+}

@@ -65,7 +65,7 @@
 }
 
 .memberItem-inner > .memberItem-content {
-  color: rgb(96, 125, 139);
+  color: $memberlist-turqoise;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
