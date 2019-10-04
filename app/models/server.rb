@@ -1,6 +1,8 @@
 class Server < ApplicationRecord
   validates :name, presence: true
 
+  before_validation :ensure_invite_link 
+
   belongs_to(
     :moderator,
     class_name: "User",
@@ -29,4 +31,10 @@ class Server < ApplicationRecord
     primary_key: :id,
     dependent: :destroy
   )
+
+  private 
+
+  def ensure_invite_link 
+    self.invite_link ||= SecureRandom::urlsafe_base64(16)
+  end 
 end

@@ -65,9 +65,38 @@ class Api::ServersController < ApplicationController
   def destroy
   end 
 
+  # Have a new user join an existing server
+  def join
+    if !logged_in?
+      render json: ["Invalid credentials"], status: 401
+    end 
+
+    # debugger
+    @server = Server.find_by(invite_link: params[:server][:invite_link])
+    # servers_user = ServersUser.find_by(server_id: @server.id, user_id: current_user.id) ||  ServersUser.new(server_id: @server.id, user_id: current_user.id)
+    servers_user = ServersUser.find_or_initialize_by(server_id: @server.id, user_id: current_user.id)
+    if @server.present? && servers_user.save
+      # ServersUser will either exist or we create it 
+      render :show
+    else 
+      render json: @server.errors.full_messages, status: 422
+    end 
+  end 
+
+  # Custom route to get a sample of servers for their invite links for new 
+  # Users to possibly join
+  def sample 
+    if !logged_in? 
+      render json: ["Invalid credentials"], status: 401
+    else  
+      @servers = Server.first(3)
+      render :index
+    end 
+  end 
+
   private 
 
   def server_params 
-    params.require(:server).permit(:moderator_id, :name)
+    params.require(:server).permit(:moderator_id, :name, :invite_link)
   end 
 end
