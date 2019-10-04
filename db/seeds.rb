@@ -15,6 +15,7 @@ nba_insider = User.create!(username: "woj", email: "woj@gmail.com", password: "t
 
 nba_server = Server.create!(moderator_id: mod1.id, name: "NBA Discussion")
 fantasybball_server = Server.create!(moderator_id: mod2.id, name: "Fantasy Basketball Strats")
+music_server = Server.create!(moderator_id: gage.id, name: "Popular Music")
 
 test_in_nba = ServersUser.create!(user_id: testUser.id, server_id: nba_server.id)
 gage_in_nba = ServersUser.create!(user_id: gage.id, server_id: nba_server.id)
@@ -26,12 +27,16 @@ insider_in_fantasy = ServersUser.create!(user_id: nba_insider.id, server_id: fan
 test_in_fantasy = ServersUser.create!(user_id: testUser.id, server_id: fantasybball_server.id)
 gage_in_fantasy = ServersUser.create!(user_id: gage.id, server_id: fantasybball_server.id)
 
+gage_in_music = ServersUser.create!(user_id: gage.id, server_id: music_server.id)
+
 # Default Category (for seed)
 default_cat1 = Category.create!(server_id: nba_server.id, name: "Text Channels")
 default_cat2 = Category.create!(server_id: fantasybball_server.id, name: "Text Channels")
+default_cat3 = Category.create!(server_id: music_server.id, name: "Text Channels")
 
 default_channel1 = Channel.create!(category_id: default_cat1.id, name: "general")
 default_channel2 = Channel.create!(category_id: default_cat2.id, name: "general")
+default_channel3 = Channel.create!(category_id: default_cat3.id, name: "general")
 off_topic_channel_in_nba = Channel.create!(category_id: default_cat1.id, name: 'off-topic')
 strategy_channel_in_fantasy = Channel.create!(category_id: default_cat2.id, name: 'strategies')
 
