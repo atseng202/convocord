@@ -8,6 +8,7 @@ class PrivateserverMessageForm extends React.Component {
   }
 
   handleKeyUp(e) {
+    e.preventDefault();
     const { privateserver } = this.props;
     if (e.keyCode === 13 && e.target.value.length > 0) {
       // TODO: - action cable message creation for DMs

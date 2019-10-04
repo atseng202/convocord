@@ -8,12 +8,13 @@ class ChannelMessageForm extends React.Component {
   }
 
   handleKeyUp(e) {
+    e.preventDefault();
     const { channel } = this.props;
     if (e.keyCode === 13 && e.target.value.length > 0) {
       const message_socket = { content: e.target.value, messageable_id: channel.id, messageable_type: "Channel" };
       // App.chat.speak(message_socket);
       // App.cable.subscriptions.subscriptions[0].speak(message_socket);
-      App[`room_channel-${channel.id}`].speak(message_socket);
+      App[`room_channel_public-${channel.id}`].speak(message_socket);
       e.target.value = "";
     }
   }
