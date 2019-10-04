@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { closeServerForm } from '../../actions/server_actions';
+import { closeServerForm, fetchSampleServers } from '../../actions/server_actions';
 import { fetchPrivateservers  } from '../../actions/privateserver_actions';
 import { closeUserPopout } from '../../actions/member_ui_actions';
 
@@ -14,7 +14,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   closeServerForm: () => dispatch(closeServerForm()),
   fetchPrivateservers: () => dispatch(fetchPrivateservers()),
-  closeUserPopout: () => dispatch(closeUserPopout())
+  closeUserPopout: () => dispatch(closeUserPopout()),
+  fetchSampleServers: () => dispatch(fetchSampleServers())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeMain);

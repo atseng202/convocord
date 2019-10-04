@@ -5,6 +5,7 @@ import categoriesReducer from './categories_reducer';
 import channelsReducer from './channels_reducer';
 import messagesReducer from './messages_reducer';
 import privateserversReducer from './privateservers_reducer';
+import sampleInvitesReducer from './sample_invites_reducer';
 
 const entitiesReducer = combineReducers({
   users: usersReducer,
@@ -12,7 +13,8 @@ const entitiesReducer = combineReducers({
   categories: categoriesReducer,
   channels: channelsReducer,
   messages: messagesReducer,
-  privateservers: privateserversReducer
+  privateservers: privateserversReducer,
+  sampleInvites: sampleInvitesReducer
 });
 
 export default entitiesReducer;

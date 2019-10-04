@@ -23,3 +23,21 @@ export const createServer = formServer => (
     processData: false
   })
 );
+
+export const joinServer = formServer => (
+  $.ajax({
+    method: 'PUT',
+    url: `/api/servers/join`,
+    data: formServer, 
+    contentType: false, 
+    processData: false 
+  })
+);
+
+export const fetchSampleServers = () => (
+  $.ajax({
+    method: 'GET',
+    url: '/api/servers/sample',
+    dataType: 'json'
+  })  
+);

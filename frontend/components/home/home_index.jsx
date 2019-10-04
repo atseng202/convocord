@@ -9,6 +9,11 @@ class HomeIndex extends React.Component {
     super(props);
 
   }
+
+  componentDidMount() {
+    console.log("Home index mounted");
+    this.props.fetchPrivateservers();
+  }
   
   render() {
     const { removePrivateserver, privateserverIds } = this.props;

@@ -16,6 +16,7 @@ class HomeMain extends React.Component {
 
   componentDidMount() {
     this.props.fetchPrivateservers();
+    this.props.fetchSampleServers();
   }
   
   componentDidUpdate() {
@@ -23,7 +24,7 @@ class HomeMain extends React.Component {
   }
 
   closePopouts() {
-    if (this.props.popoutOpen) { this.props.closeUserPopout() };
+    if (this.props.popoutOpen) { this.props.closeUserPopout(); }
   }
 
   render() {

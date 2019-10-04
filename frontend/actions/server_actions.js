@@ -13,6 +13,8 @@ export const CLEAR_SERVER_ERRORS = 'CLEAR_SERVER_ERRORS';
 
 export const SELECT_SERVER_CHANNEL = 'SELECT_SERVER_CHANNEL';
 
+export const RECEIVE_SERVER_INVITES = 'RECEIVE_SERVER_INVITES';
+
 export const receive_servers = servers => ({
   type: RECEIVE_SERVERS,
   servers
@@ -32,10 +34,21 @@ export const clear_server_errors = () => ({
   type: CLEAR_SERVER_ERRORS
 });
 
+export const receive_server_invites = (sampleServers) => ({
+  type: RECEIVE_SERVER_INVITES,
+  sampleServers
+});
+
 // Action Creators
 export const fetchServers = () => dispatch => {
   return ServerAPIUtil.fetchServers().then(
     servers => dispatch(receive_servers(servers))
+  );
+};
+
+export const fetchSampleServers = () => dispatch => {
+  return ServerAPIUtil.fetchSampleServers().then(
+    sampleServers => dispatch(receive_server_invites(sampleServers))
   );
 };
 
@@ -51,6 +64,16 @@ export const fetchServer = serverId => dispatch => {
 export const createSingleServer = formServer => dispatch => {
   return ServerAPIUtil.createServer(formServer).then(
     server =>  {
+      dispatch(receive_server(server));
+      return server;
+    },
+    errors => dispatch(receive_server_errors(errors.responseJSON))
+  );
+};
+
+export const joinSingleServer = formServer => dispatch => {
+  return ServerAPIUtil.joinServer(formServer).then(
+    server => { 
       dispatch(receive_server(server));
       return server;
     },

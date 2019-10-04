@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleInactivePrivateserver } from '../../actions/privateserver_actions';
+import { toggleInactivePrivateserver, fetchPrivateservers } from '../../actions/privateserver_actions';
 import HomeIndex from './home_index';
 
 const mapStateToProps = state => ({
@@ -8,7 +8,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  removePrivateserver: privateserverId => dispatch(toggleInactivePrivateserver(privateserverId))
+  removePrivateserver: privateserverId => dispatch(toggleInactivePrivateserver(privateserverId)),
+  fetchPrivateservers: () => dispatch(fetchPrivateservers())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeIndex);
