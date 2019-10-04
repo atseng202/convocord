@@ -25,7 +25,7 @@ class ServerMemberPopout extends React.Component {
     e.preventDefault();
 
     const { member, createMessage, authorId, closeUserPopout } = this.props;
-    // debugger;
+
     if (e.keyCode === 13 && e.target.value.length > 0) {
       const formData = new FormData();
       formData.append('message[author_id]', authorId);  
@@ -42,9 +42,8 @@ class ServerMemberPopout extends React.Component {
   }
 
   render() {
-    // const { handlePopout } = this.props;
     if (!this.props.popoutOpen) { return null; }
-    // debugger;
+
     const { member, authorId } = this.props;
 
     const messageForm = (

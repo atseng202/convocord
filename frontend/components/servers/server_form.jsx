@@ -42,7 +42,6 @@ class ServerForm extends React.Component {
   }
 
   changeToServerForm(event) {
-    // debugger;
     event.preventDefault();
     this.setState({onCreateForm:true, onLandingForm: false, onJoinForm: false });
     event.stopPropagation();
@@ -117,8 +116,6 @@ class ServerForm extends React.Component {
         {this.props.sampleInvites.map( (server, idx) => <li key={idx}>{server.invite_link}</li> ) }
       </ul>
     );
-
-    // debugger;
 
     let currentFormPage; 
     if (this.state.onLandingForm) {

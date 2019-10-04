@@ -61,7 +61,7 @@ class PrivateserverDetail extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log("Dms will unmount");
+    // Unmount Direct Messages 
     const { match } = this.props;
     if (App[`room_channel_private-${match.params.privateserverId}`]) {
       App[`room_channel_private-${match.params.privateserverId}`].disconnected();

@@ -9,8 +9,8 @@ class ServerMemberIndexItem extends React.Component {
   }
 
   handlePopout(e) {
+    // Member popout appears here
     e.preventDefault();
-    console.log("Handling popout");
     const { member, openUserPopout, popoutId, closeUserPopout } = this.props;
     e.stopPropagation();
     closeUserPopout();

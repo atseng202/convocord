@@ -9,12 +9,11 @@ class ServerMemberIndex extends React.Component {
 
   render() {
     const { members, moderator } = this.props;
-    // debugger;
+
     const membersMap = (
       moderator && this.props.members.filter(potentialMember => potentialMember.id !== moderator.id).map(member => <ServerMemberIndexItemContainer key={member.id} member={member} />)
     );
 
-    // debugger;
     return (
       <section className="membersWrapper">
         <div className="membersScrollWrap">

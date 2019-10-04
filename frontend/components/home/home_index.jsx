@@ -11,7 +11,6 @@ class HomeIndex extends React.Component {
   }
 
   componentDidMount() {
-    console.log("Home index mounted");
     this.props.fetchPrivateservers();
   }
   

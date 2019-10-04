@@ -70,8 +70,7 @@ class Api::ServersController < ApplicationController
     if !logged_in?
       render json: ["Invalid credentials"], status: 401
     end 
-
-    # debugger
+    
     @server = Server.find_by(invite_link: params[:server][:invite_link])
     # servers_user = ServersUser.find_by(server_id: @server.id, user_id: current_user.id) ||  ServersUser.new(server_id: @server.id, user_id: current_user.id)
     servers_user = ServersUser.find_or_initialize_by(server_id: @server.id, user_id: current_user.id)

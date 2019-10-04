@@ -10,7 +10,6 @@ module ApplicationCable
     private 
 
     def find_verified_user
-      # debugger
       current_user = User.find_by(session_token: cookies.signed[:session_token])
       if current_user 
         current_user 
