@@ -40,6 +40,6 @@ default_channel3 = Channel.create!(category_id: default_cat3.id, name: "general"
 off_topic_channel_in_nba = Channel.create!(category_id: default_cat1.id, name: 'off-topic')
 strategy_channel_in_fantasy = Channel.create!(category_id: default_cat2.id, name: 'strategies')
 
-msg1_in_channel1 = Message.create!(author_id: testUser.id, content: "Welcome to NBA Server!", messageable: default_channel1)
-msg2_in_channel1 = Message.create!(author_id: gage.id, content: "Woohoo!", messageable: default_channel1)
-msg3_in_channel1 = Message.create!(author_id: mod1.id, content: "Glad to be here!", messageable: default_channel1)
+# msg1_in_channel1 = Message.create!(author_id: testUser.id, content: "Welcome to NBA Server!", messageable: default_channel1)
+# msg2_in_channel1 = Message.create!(author_id: gage.id, content: "Woohoo!", messageable: default_channel1)
+# msg3_in_channel1 = Message.create!(author_id: mod1.id, content: "Glad to be here!", messageable: default_channel1)
