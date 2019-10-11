@@ -6,6 +6,6 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://convocord.herokuapp.com:6379/1" } %>
+  url: <%= ENV.fetch("REDIS_URL") { "redis://redistogo:9f9d890760f95b041000fbcc28f49b89@spinyfin.redistogo.com:10249/" } %>
   channel_prefix: convocord_production
   # url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
