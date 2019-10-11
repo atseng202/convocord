@@ -14,7 +14,7 @@ class ServerMemberPopout extends React.Component {
   }
 
   preventPropagation(e) {
-    e.stopPropagation();
+    // e.stopPropagation();
   }
 
   handleChange(e) {
@@ -23,10 +23,11 @@ class ServerMemberPopout extends React.Component {
 
   handleKeyUp(e) {
     e.preventDefault();
-
+    e.stopPropagation();
     const { member, createMessage, authorId, closeUserPopout } = this.props;
 
     if (e.keyCode === 13 && e.target.value.length > 0) {
+      // e.preventDefault();
       const formData = new FormData();
       formData.append('message[author_id]', authorId);  
       formData.append('message[content]', this.state.content);
@@ -48,13 +49,13 @@ class ServerMemberPopout extends React.Component {
 
     const messageForm = (
       (member.id !== authorId) ?
-      <form className="userPopout-messageForm" onKeyUp={this.handleKeyUp}>
-        <input className="userPopout-quickMessage" placeholder={`Message @${member.username}`} onChange={this.handleChange} value={this.state.content} />
+      <form className="userPopout-messageForm" >
+          <textarea rows="1" className="userPopout-quickMessage" placeholder={`Message @${member.username}`} onChange={this.handleChange} onKeyUp={this.handleKeyUp} value={this.state.content} />
       </form> : null
      );
     
     return (
-      <div className="popout-wrapper" onClick={this.stopPropagation}>
+      <div className="popout-wrapper" onClick={this.preventPropagation}>
         <div className="popout">
           <div className="userPopout">
             <header className="userPopout-header">

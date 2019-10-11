@@ -193,7 +193,7 @@
   border-radius: 5px;
 }
 
-.messageArea-inner > textarea {
+.messageArea-inner > textarea, .userPopout-quickMessage {
   font-weight: $regular;
   font-size: 0.9375rem;
   height: auto;
