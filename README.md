@@ -1,6 +1,6 @@
 # Convocord
 
-![](convocord_demo.gif)
+![](convocord_updated_demo.gif)
 
 # Background
 
