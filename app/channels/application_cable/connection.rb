@@ -7,6 +7,10 @@ module ApplicationCable
       logger.add_tags logged_in_user.username
     end 
 
+    def check_current_user 
+      User.find_by(session_token: cookies.signed[:session_token])
+    end 
+    
     private 
 
     def find_verified_user
