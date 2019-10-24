@@ -11,14 +11,17 @@ class ChannelDetail extends React.Component {
   }
 
   componentDidMount() {
-    const { requestSingleChannel, match, receiveMessage } = this.props;
+    const { requestSingleChannel, match, receiveMessage, receiveMessageErrors } = this.props;
     requestSingleChannel(match.params.channelId).then(
       (channel) => {
         App[`room_channel_public-${channel.channel.id}`] = App.cable.subscriptions.create({channel: "RoomChannel", channel_id: channel.channel.id}, {
           connected: function () { },
           disconnected: function () { App.cable.subscriptions.remove(this); },
           received: function (data) {
-            if (data['message']['messageable_type'] === 'Channel' && data['message']['messageable_id'] === channel.channel.id) {
+            if (data[0] === 'Invalid credentials') {
+              receiveMessageErrors(data);
+            }
+            else if (data['message']['messageable_type'] === 'Channel' && data['message']['messageable_id'] === channel.channel.id) {
               receiveMessage(data['message']);
             }
           },
@@ -33,7 +36,7 @@ class ChannelDetail extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { requestSingleChannel, match, receiveMessage, removeMessages } = this.props;
+    const { requestSingleChannel, match, receiveMessage, removeMessages, receiveMessageErrors } = this.props;
     if (match.params.channelId !== prevProps.match.params.channelId) {
       if (App[`room_channel_public-${prevProps.match.params.channelId}`]) {
         App[`room_channel_public-${prevProps.match.params.channelId}`].disconnected();
@@ -48,7 +51,10 @@ class ChannelDetail extends React.Component {
             connected: function () { },
             disconnected: function () { App.cable.subscriptions.remove(this); },
             received: function (data) {
-              if (data['message']['messageable_type'] === 'Channel' && data['message']['messageable_id'] === channel.channel.id) {
+              if (data[0] === 'Invalid credentials') {
+                receiveMessageErrors(data);
+              }
+              else if (data['message']['messageable_type'] === 'Channel' && data['message']['messageable_id'] === channel.channel.id) {
                 receiveMessage(data['message']);
               }
             },

@@ -8,7 +8,7 @@ class PrivateserverDetail extends React.Component {
   }
 
   componentDidMount() {
-    const { requestSinglePrivateserver, match, receiveMessage } = this.props;
+    const { requestSinglePrivateserver, match, receiveMessage, receiveMessageErrors } = this.props;
 
     requestSinglePrivateserver(match.params.privateserverId).then(
       (privateserver) => {
@@ -17,7 +17,12 @@ class PrivateserverDetail extends React.Component {
           connected: function () { },
           disconnected: function () { App.cable.subscriptions.remove(this); },
           received: function (data) {
-            if (data['message']['messageable_type'] === 'Privateserver' && data['message']['messageable_id'] === privateserver.privateserver.id) {
+            // Handling error here since ActionCable frontend does not use 
+            // regular redux thunk actions to create a new message
+            if (data[0] === 'Invalid credentials') {
+              receiveMessageErrors(data);
+            }
+            else if (data['message']['messageable_type'] === 'Privateserver' && data['message']['messageable_id'] === privateserver.privateserver.id) {
               receiveMessage(data['message']);
             }
           },
@@ -32,7 +37,7 @@ class PrivateserverDetail extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { requestSinglePrivateserver, match, receiveMessage } = this.props;
+    const { requestSinglePrivateserver, match, receiveMessage, receiveMessageErrors } = this.props;
     if (match.params.privateserverId !== prevProps.match.params.privateserverId) {
       if (App[`room_channel_private-${prevProps.match.params.privateserverId}`]) {
         App[`room_channel_private-${prevProps.match.params.privateserverId}`].disconnected();
@@ -44,7 +49,10 @@ class PrivateserverDetail extends React.Component {
             connected: function () { },
             disconnected: function () { App.cable.subscriptions.remove(this); },
             received: function (data) {
-              if (data['message']['messageable_type'] === 'Privateserver' && data['message']['messageable_id'] === privateserver.privateserver.id) {
+              if (data[0] === 'Invalid credentials') {
+                receiveMessageErrors(data);
+              }
+              else if (data['message']['messageable_type'] === 'Privateserver' && data['message']['messageable_id'] === privateserver.privateserver.id) {
                 receiveMessage(data['message']);
               }
             },
