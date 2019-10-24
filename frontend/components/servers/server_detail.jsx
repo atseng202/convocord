@@ -3,6 +3,7 @@ import { withRouter, Link, Route } from 'react-router-dom';
 import ChannelDetailContainer from '../channels/channel_detail_container';
 
 import ServerCategoryIndexContainer from './server_category_index_container';
+import { ProtectedRoute } from '../../util/route_util';
 
 class ServerDetail extends React.Component {
   constructor(props) {
@@ -75,7 +76,7 @@ class ServerDetail extends React.Component {
           
         </div>
 
-        <Route exact path="/servers/:serverId/categories/:categoryId/channels/:channelId" component={ChannelDetailContainer} />
+        <ProtectedRoute exact path="/servers/:serverId/categories/:categoryId/channels/:channelId" component={ChannelDetailContainer} />
 
       </div>
     )

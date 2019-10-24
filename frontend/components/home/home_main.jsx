@@ -6,6 +6,7 @@ import FriendIndex from '../friends/friend_index';
 import ServerFormContainer from '../servers/server_form_container';
 import ServerDetailContainer from '../servers/server_detail_container';
 import { Route } from 'react-router-dom';
+import { ProtectedRoute } from '../../util/route_util';
 
 class HomeMain extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class HomeMain extends React.Component {
   }
   
   componentDidUpdate() {
-    
+
   }
 
   closePopouts() {
@@ -31,9 +32,9 @@ class HomeMain extends React.Component {
     return (
       <div className="home-div">
         <section className="home-main" onClick={this.closePopouts}>
-          <Route path={["/servers/@me", "/servers/:serverId"]} component={ServerIndexContainer} />
-          <Route path="/servers/:serverId" component={ServerDetailContainer} />
-          <Route path="/servers/@me" component={HomeIndexContainer} />
+          <ProtectedRoute path={["/servers/@me", "/servers/:serverId"]} component={ServerIndexContainer} />
+          <ProtectedRoute path="/servers/:serverId" component={ServerDetailContainer} />
+          <ProtectedRoute path="/servers/@me" component={HomeIndexContainer} />
           {/* <Route exact path="/servers/@me" component={FriendIndex} /> */}
           
         </section>
