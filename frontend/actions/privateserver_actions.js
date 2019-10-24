@@ -5,6 +5,8 @@ export const RECEIVE_PRIVATESERVER = 'RECEIVE_PRIVATESERVER';
 
 export const REMOVE_PRIVATESERVER = 'REMOVE_PRIVATESERVER';
 
+export const RECEIVE_PRIVATESERVER_ERRORS = 'RECEIVE_PRIVATESERVER_ERRORS';
+
 export const receive_privateservers = privateservers => ({
   type: RECEIVE_PRIVATESERVERS,
   privateservers
@@ -20,18 +22,25 @@ export const remove_privateserver = privateserver => ({
   privateserver
 });
 
+export const receive_privateserver_errors = errors => ({
+  type: RECEIVE_PRIVATESERVER_ERRORS,
+  errors
+});
+
 export const fetchPrivateserver = privateserverId => dispatch => {
   return PrivateserverAPIUtil.fetchPrivateserver(privateserverId).then(
     privateserver => {
       dispatch(receive_privateserver(privateserver));
       return privateserver;
-    }
+    },
+    errors => dispatch(receive_privateserver_errors(errors.responseJSON))
   );
 };
 
 export const fetchPrivateservers = () => dispatch => {
   return PrivateserverAPIUtil.fetchPrivateservers().then(
-    privateservers => dispatch(receive_privateservers(privateservers))
+    privateservers => dispatch(receive_privateservers(privateservers)),
+    errors => dispatch(receive_privateserver_errors(errors.responseJSON))
   );
 };
 
@@ -40,7 +49,8 @@ export const createSinglePrivateserver = formPrivateserver => dispatch => {
     privateserver => {
       dispatch(receive_privateserver(privateserver));
       return privateserver;
-    }
+    },
+    errors => dispatch(receive_privateserver_errors(errors.responseJSON))
   );
 };
 
@@ -49,6 +59,7 @@ export const toggleInactivePrivateserver = privateserverId => dispatch => {
     privateserver => {
       dispatch(remove_privateserver(privateserver));
       return privateserver;
-    }
+    },
+    errors => dispatch(receive_privateserver_errors(errors.responseJSON))
   );
 };

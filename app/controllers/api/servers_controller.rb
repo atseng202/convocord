@@ -1,4 +1,6 @@
 class Api::ServersController < ApplicationController
+  before_action :ensure_logged_in
+
   def index 
     if logged_in? 
       @servers = current_user.servers
@@ -98,4 +100,10 @@ class Api::ServersController < ApplicationController
   def server_params 
     params.require(:server).permit(:moderator_id, :name, :invite_link)
   end 
+
+  def ensure_logged_in
+    if !logged_in? 
+      render json: ["Invalid credentials"], status: 401
+    end 
+  end
 end

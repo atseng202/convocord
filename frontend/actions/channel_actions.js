@@ -16,7 +16,8 @@ export const fetchChannel = channelId => dispatch => {
     channel => {
       dispatch(receive_channel(channel));
       return channel;
-    }
+    },
+    errors => dispatch(receive_channel_errors(errors.responseJSON))
   );
 };
 

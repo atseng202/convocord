@@ -42,13 +42,15 @@ export const receive_server_invites = (sampleServers) => ({
 // Action Creators
 export const fetchServers = () => dispatch => {
   return ServerAPIUtil.fetchServers().then(
-    servers => dispatch(receive_servers(servers))
+    servers => dispatch(receive_servers(servers)),
+    errors => dispatch(receive_server_errors(errors.responseJSON))
   );
 };
 
 export const fetchSampleServers = () => dispatch => {
   return ServerAPIUtil.fetchSampleServers().then(
-    sampleServers => dispatch(receive_server_invites(sampleServers))
+    sampleServers => dispatch(receive_server_invites(sampleServers)),
+    errors => dispatch(receive_server_errors(errors.responseJSON))
   );
 };
 
@@ -57,7 +59,10 @@ export const fetchServer = serverId => dispatch => {
     server => {
       dispatch(receive_server(server));
       return server;
-    } 
+    },
+    errors => { 
+      dispatch(receive_server_errors(errors.responseJSON));
+    }
   );
 };
 
