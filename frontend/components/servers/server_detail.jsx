@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, Link, Route } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import ChannelDetailContainer from '../channels/channel_detail_container';
 
 import ServerCategoryIndexContainer from './server_category_index_container';

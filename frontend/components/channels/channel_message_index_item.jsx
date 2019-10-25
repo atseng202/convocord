@@ -18,7 +18,7 @@ const ChannelMessageIndexItem = ({message, author, currentUserId}) => (
       </header>
 
       <p className="messageContent">
-        message: {message.content}
+        {message.content}
       </p>
 
     </div>

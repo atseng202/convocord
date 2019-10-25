@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ChannelIndexItemContainer from '../channels/channel_index_item_container';
 
 import ReactModal from 'react-modal';
@@ -58,13 +57,3 @@ class ServerCategoryIndexItem extends React.Component {
 } 
 
 export default ServerCategoryIndexItem;
-
-
-// <div key={channel.id} className="channels-rowContainer">
-
-//   <Link to={`/servers/${server.id}/categories/${category.id}/channels/${channel.id}`} className="channel-content">
-//     <div className="channel-hashtag">#</div>
-//     <span className="channel-name">{channel.name}</span>
-//   </Link>
-
-// </div>

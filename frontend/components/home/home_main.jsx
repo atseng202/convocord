@@ -5,7 +5,6 @@ import FriendIndex from '../friends/friend_index';
 
 import ServerFormContainer from '../servers/server_form_container';
 import ServerDetailContainer from '../servers/server_detail_container';
-import { Route } from 'react-router-dom';
 import { ProtectedRoute } from '../../util/route_util';
 
 class HomeMain extends React.Component {

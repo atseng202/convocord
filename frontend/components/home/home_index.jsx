@@ -1,6 +1,6 @@
 import React from 'react';
 import FriendIndex from '../friends/friend_index';
-import { Link, Route, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import PrivateserverIndexItem from '../privateservers/privateserver_index_item';
 import PrivateserverDetailContainer from '../privateservers/privateserver_detail_container';
 import { ProtectedRoute } from '../../util/route_util';
